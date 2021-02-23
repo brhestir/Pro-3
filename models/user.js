@@ -2,21 +2,24 @@
 const mongoose = require(`mongoose`);
 const Schema = mongoose.Schema;
 
-const positionSchema = new Schema({
-	tickerSymbol: {
+const userSchema = new Schema({
+	userName: {
 		type: String,
 		required: true,
 		trim: true,
 		required: "Enter a stock ticker symbol",
 	},
-	buyPrice: {
+	totalChange: {
 		type: Number,
 	},
-	sellPrice: {
-		type: Number,
-	},
+	positions: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: "Position"
+		}
+	]
 });
 
-const Position = mongoose.model("Position", positionSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = Position;
+module.exports = User;
