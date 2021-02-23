@@ -12,47 +12,46 @@ mongoose.connect(
 const positionSeed = [
   {
     tickerSymbol: "GME",
-    buyDate: new Date(Date.now() - 40),
-    sellDate: new Date(Date.now() - 33),
-    buyQty: 100,
-		sellQty: 100
+    buyPrice: 100.00, 
+    selPrice: 200.00
   },
 	{
     tickerSymbol: "AAPL",
-    buyDate: new Date(Date.now() - 41),
-    sellDate: new Date(Date.now() - 34),
-    buyQty: 100,
-		sellQty: 100
+    buyPrice: 500.00, 
+    selPrice: 750.00
   },
 	{
     tickerSymbol: "TSLA",
-    buyDate: new Date(Date.now() - 42),
-    sellDate: new Date(Date.now() - 35),
-    buyQty: 100,
-		sellQty: 100
+    buyPrice: 3000.00, 
+    selPrice: 4000.00
   },
 	{
     tickerSymbol: "AMC",
-    buyDate: new Date(Date.now() - 43),
-    sellDate: new Date(Date.now() - 36),
-    buyQty: 100,
-		sellQty: 100
+    buyPrice: 100.00, 
+    selPrice: 3.00
   },
 	{
     tickerSymbol: "TWTR",
-    buyDate: new Date(Date.now() - 44),
-    sellDate: new Date(Date.now() - 37),
-    buyQty: 100,
-		sellQty: 100
+    buyPrice: 200.00, 
+    selPrice: 350.00
   },
 	{
     tickerSymbol: "NVDA",
-    buyDate: new Date(Date.now() - 45),
-    sellDate: new Date(Date.now() - 38),
-    buyQty: 100,
-		sellQty: 100
+    buyPrice: 1000.00, 
+    selPrice: 2000.00
   },
 ];
+
+const userSeed = [
+  {
+    userName: "Tony Stark",
+  },
+	{
+    userName: "Ray Dalio",
+  },
+];
+
+
 
 db.Position
 	.remove({})
@@ -62,6 +61,19 @@ db.Position
   process.exit(0);
 })
 .catch( (err) => {
-	console.error(err);
+	console.log(err);
+	process.exit(1);
+})
+
+db.User
+	.remove({})
+	.then(() => db.User.collection.insertMany(userSeed))
+	.then( (data) => {
+	console.log(data);
+	console.log(data.result.n + " records inserted!");
+  process.exit(0);
+})
+.catch( (err) => {
+	console.log(err);
 	process.exit(1);
 });
