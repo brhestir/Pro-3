@@ -1,0 +1,40 @@
+{
+  "name": "stark-etf",
+  "version": "1.0.0",
+  "description": "Cloud-based security exchange model to level up experience in a risk-neutral arena",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no tests at present\" && exit 1",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brhestir/stark-etf.git"
+  },
+  "keywords": [
+    "stonks",
+    "wsb",
+    "options"
+  ],
+  "author": "Paul Keldsen, Rafael Chavez and Brian Hestir",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brhestir/stark-etf/issues"
+  },
+  "homepage": "https://github.com/brhestir/stark-etf#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.11.17"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
