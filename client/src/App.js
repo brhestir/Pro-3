@@ -1,19 +1,21 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddPosition from "./containers/AddPosition/AddPosition";
+import AllPositions from "./containers/AllPositions/AllPositions";
 import Home from "./containers/Home/Home"
+import NavbarVanilla from "./containers/NavbarVanilla/NavbarVanilla";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
       <Router>
+				<NavbarVanilla />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/addposition" component={AddPosition} />
-          {/* <Route exact path="/restaurants" component={AllRestaurants} />
-          <Route exact path="/restaurants/new" component={NewRestaurant} />
-          <Route exact path="/restaurants/:id" component={SingleRestaurant} />
-          <Route exact path="/restaurants/:id/edit" component={EditRestaurant} /> */}
+          <Route exact path="/positions/add" component={AddPosition} />
+          {/* <Route exact path="/positions/:id/edit" component={EditPosition} /> */}
+					{/* <Route exact path="/positions/:id" component={SinglePosition} /> */}
+					<Route exact path="/positions/all" component={AllPositions} />
         </Switch>
       </Router>
       </header>
