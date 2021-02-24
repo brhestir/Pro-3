@@ -34,9 +34,9 @@ const NavbarVanilla = () => {
             <Link className="navbar-item" to="/positions/add">
               Position: Add
             </Link>
-            {/* <Link className="navbar-link" to="/positions/:id/edit">
-							Position: Edit
-						</Link> */}
+            <Link className="navbar-item" to="/positions/edit">
+							Edit Positions
+						</Link>
             {/* <Link className="navbar-item" to="/positions/:id">
 							Positions: One
 						</Link> */}
