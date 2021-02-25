@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import PositionListView from "../../components/PositionListView/PositionListView";
+import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 
 const AllPositions = () => {
   const [positions, setPositions] = useState([]);
@@ -28,6 +29,7 @@ const AllPositions = () => {
             All Positions
           </h1>
         </div>
+        <UserProfileCard />
         <PositionListView inputArray={positions} />
       </div>
     </>
