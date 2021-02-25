@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import API from "../../utils/API";
 
 const AddPosition = () => {
+  const [searchQuery, setSearchQuery] = useState("GME");
+
+  useEffect(() => {
+    API.search(searchQuery).then((res) => {
+      console.log(res);
+      // console.log(res.data.data[0].last);
+    });
+  }, []);
+
   return (
     <div>
       <div className="container notification is-primary">
@@ -17,17 +27,16 @@ const AddPosition = () => {
           <div className="column notification is-primary">
             <h1>Add Position</h1>
 
-            <div class="control">
+            <div className="control">
               <input
-                class="input"
+                className="input"
                 type="text"
                 placeholder="Enter Ticker Symbol"
               />
             </div>
-            <button class="button is-rounded is-info">Search</button>
+            <button className="button is-rounded is-info">Search</button>
             <div>Search information will show up here</div>
-            <button class="button is-link">Add to Portfolio</button>
-
+            <button className="button is-link">Add to Portfolio</button>
           </div>
         </div>
       </div>
