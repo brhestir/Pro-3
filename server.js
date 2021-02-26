@@ -1,4 +1,5 @@
 // ./server.js
+require('dotenv').config();													// to include env vars
 const express = require ("express");
 const mongoose = require("mongoose");
 const app = express();

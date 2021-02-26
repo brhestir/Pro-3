@@ -22,13 +22,17 @@ const Signup = ({ setToken }) => {
         console.log(response.data);
         jwt.verify(
           response.data.token,
-          process.env.REACT_APP_JWT_SIGNATURE,
+          process.env.REACT_APP_SECRET,
           (err, decoded) => {
             if (err) {
               console.log(err);
             } else {
               setToken(response.data.token);
-              history.push("/admin");
+              // This MUST be converted into a modal or non-modal TOAST with UI-Framework
+              alert(
+                `Signup success!  Your token is set as ${response.data.token}`
+              );
+              history.push("/positions/all");
             }
           }
         );
@@ -104,8 +108,7 @@ const Signup = ({ setToken }) => {
                 </span>
               </div>
               <p className="help is-success">
-                Some email addresses may already be in use. Consider providing
-                feedback to the user at runtime.
+                Email address will be converted to lowercase. Must be unique.
               </p>
             </div>
           </div>

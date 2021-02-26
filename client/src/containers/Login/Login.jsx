@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import jwt from "jsonwebtoken";
 import axios from "axios";
 
-const Login = ({ setToken }) => {
+const Login = ({ setUser }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,13 +22,19 @@ const Login = ({ setToken }) => {
         console.log(response.data);
         jwt.verify(
           response.data.token,
-          process.env.REACT_APP_JWT_SIGNATURE,
+          process.env.REACT_APP_SECRET,
           (err, decoded) => {
             if (err) {
-              console.log(err);
+              console.log(err); // If login is invalid, perform "foo"
             } else {
-              setToken(response.data.token);
-              history.push("/admin");
+              // Set the user-logged-in-token & do something with it
+              setUser({ _id: decoded._id });
+              // This MUST be converted into a modal or non-modal TOAST with UI-Framework
+              alert(
+                `Login success!  Your token is set as ${response.data.token}`
+              );
+              // If login valid, go to logged-in-STATE
+              history.push("/positions/all");
             }
           }
         );
