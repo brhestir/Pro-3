@@ -1,5 +1,6 @@
 // authController.js
 const db = require("../models");
+const jwt = require("jsonwebtoken");		// Allow us to take in a string and sign with a key
 const bcrypt = require("bcrypt");
 const NUM_SALT_ROUNDS = 10;							// More rounds increases brute-force complexity
 
@@ -18,8 +19,9 @@ module.exports = {
 			console.log(hashedPassword);
 			userToCreate.password = hashedPassword;
 			db.User.create(userToCreate).then((newUser) => {
-				// FIXME: Don't send back to the user
-				res.json(newUser);
+				// Store secrets in .env file and use environment variable
+				const token = jwt.sign({ _id: newUser._id }, "supersecretpassword");
+				res.json({ token: token });		// Send token back to the user
 			}).catch((err) => {
 				console.log(err);
 				res.status(INTERNAL_SERVER_ERROR).end();
@@ -33,8 +35,8 @@ module.exports = {
 			// Compare the previously hashed and stored password
 			bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
 				if(result) {
-					//FIXME: don't send back to the user.
-					res.json(foundUser);
+					const token = jwt.sign({ _id: foundUser._id }, "supersecretpassword");
+					res.json({ token: token });
 				} else {
 					// Alert that the (username OR password) is incorrect
 					res.status(CLIENT_ERROR_UNAUTHORIZED).end();
