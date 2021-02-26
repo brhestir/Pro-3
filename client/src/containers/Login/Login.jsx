@@ -97,7 +97,7 @@ const Login = ({ setToken }) => {
                   }}
                 />
                 <span className="icon is-small is-left">
-                  <i className="fas fa-email"></i>
+                  <i className="fas fa-envelope"></i>
                 </span>
                 <span className="icon is-small is-right">
                   <i className="fas fa-check"></i>
@@ -127,7 +127,7 @@ const Login = ({ setToken }) => {
                   }}
                 />
                 <span className="icon is-small is-left">
-                  <i className="fas fa-password"></i>
+                  <i className="fas fa-key"></i>
                 </span>
                 <span className="icon is-small is-right">
                   <i className="fas fa-check"></i>
@@ -140,9 +140,9 @@ const Login = ({ setToken }) => {
             </div>
           </div>
 
-          <div className="columns has-text-centered">
+          <div className="has-text-centered">
             <button
-              className="button is-primary is-large is-outlined is-right"
+              className="button is-primary is-large is-outlined"
               type="submit"
               value="Submit Input"
             >
