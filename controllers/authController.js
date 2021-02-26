@@ -20,7 +20,7 @@ module.exports = {
 			userToCreate.password = hashedPassword;
 			db.User.create(userToCreate).then((newUser) => {
 				// Store secrets in .env file and use environment variable
-				const token = jwt.sign({ _id: newUser._id }, "9234toomanysecrets5TOOMANYSECRETS!");
+				const token = jwt.sign({ _id: newUser._id }, process.env.SECRET);
 				res.json({ token: token });		// Send token back to the user
 			}).catch((err) => {
 				console.log(err);
@@ -35,7 +35,7 @@ module.exports = {
 			// Compare the previously hashed and stored password
 			bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
 				if(result) {
-					const token = jwt.sign({ _id: foundUser._id }, "9234toomanysecrets5TOOMANYSECRETS!");
+					const token = jwt.sign({ _id: foundUser._id }, process.env.SECRET);
 					res.json({ token: token });
 				} else {
 					// Alert that the (username OR password) is incorrect
