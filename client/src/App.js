@@ -4,6 +4,9 @@ import AllPositions from "./containers/AllPositions/AllPositions";
 import EditPositions from "./containers/EditPositions/EditPositions";
 import Home from "./containers/Home/Home";
 import NavbarVanilla from "./containers/NavbarVanilla/NavbarVanilla";
+import Signup from "./containers/Signup/Signup";
+import Login from "./containers/Login/Login";
+
 
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
             <Route exact path="/positions/edit" component={EditPositions} />
             {/* <Route exact path="/positions/:id" component={SinglePosition} /> */}
             <Route exact path="/positions/all" component={AllPositions} />
+						<Route exact path="/signup" component={Signup} />
+						<Route exact path="/login" component={Login} />
+
           </Switch>
         </Router>
       </header>
