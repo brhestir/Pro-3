@@ -3,7 +3,17 @@ const db = require("../models/index");
 
 // This file empties the Positions collection and inserts the books below
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/starketf");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/starketf", {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false,
+	useCreateIndex: true,
+}).then( () => {
+	console.log("[i] MongoDB connected successfully");
+}).catch( (err) => {
+	console.log(`[E] MongoDB connection error: ${err}`);
+});
+
 
 // buy jan 13, 2021
 // sell jan 27, 2021
@@ -49,7 +59,7 @@ const userSeed = [
   },
 ];
 
-db.Position.remove({})
+db.Position.deleteMany({})
   .then(() => db.Position.collection.insertMany(positionSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");
@@ -60,7 +70,7 @@ db.Position.remove({})
     process.exit(1);
   });
 
-db.User.remove({})
+db.User.deleteMany({})
   .then(() => db.User.collection.insertMany(userSeed))
   .then((data) => {
     console.log(data.result.n + " records inserted!");

@@ -5,9 +5,17 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 	userName: {
 		type: String,
-		required: true,
 		trim: true,
-		required: "Enter a stock ticker symbol",
+	},
+	email: {
+		type: String,
+		trim: true,
+		required: true,
+		unique: true
+	},
+	password: {
+		type: String,
+		trim: true,
 	},
 	totalChange: {
 		type: Number,
@@ -18,6 +26,11 @@ const userSchema = new Schema({
 			ref: "Position"
 		}
 	]
+});
+
+userSchema.pre("save", function(next) {
+	this.email = this.email.toLowerCase();
+	next();
 });
 
 const User = mongoose.model("User", userSchema);
