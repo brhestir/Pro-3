@@ -1,31 +1,27 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import API from "../../utils/API";
 
+// TODO: Change variable names so they're not so confusing.
+
 const AddPosition = () => {
   const [searchQuery, setSearchQuery] = useState("");
-
-  // TODO: Be able to pull full stock name from the search query
   const [stockName, setStockName] = useState("");
-
+  const [searchTicker, setSearchTicker] = useState("");
   const [stockPrice, setStockPrice] = useState("");
-
-  // TODO: Probably don't need this code, but leaving for now.
-  // useEffect(() => {
-  //   API.search(searchQuery).then((res) => {
-  //     console.log(res.data);
-  //     setStockPrice(res.data.data[0].last);
-  //     // console.log(res.data.data[0].last);
-  //   });
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSearchQuery(stockName);
-    API.search(stockName).then((res) => {
-      console.log(res.data);
-      setStockPrice(res.data.data[0].last);
-      // console.log(res.data.data[0].last);
-    });
+    axios
+      .get(
+        `http://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setStockPrice(res.data.data.intraday[0].last);
+        setSearchQuery(res.data.data.name);
+        setSearchTicker(stockName);
+      });
   };
 
   return (
@@ -64,6 +60,7 @@ const AddPosition = () => {
             </button>
             <div>Search information will show up under here:</div>
             <div>Stock: {searchQuery}</div>
+            <div>Ticker: {searchTicker}</div>
             <div>Price: {stockPrice}</div>
             {/* TODO: Make this button add position to database */}
             {/* <button className="button is-link">Add to Portfolio</button> */}
