@@ -12,7 +12,7 @@ const INTERNAL_SERVER_ERROR	= 500;			// The server encountered an unexpected con
 module.exports = {
 	createNewUser: function(req, res) {
 		const userToCreate = {
-			email: req.body.email,
+				email: req.body.email,
 		}
 		bcrypt.hash(req.body.password, NUM_SALT_ROUNDS, (err, hashedPassword) => {
 			if(err) throw new Error(err);
@@ -20,7 +20,14 @@ module.exports = {
 			userToCreate.password = hashedPassword;
 			db.User.create(userToCreate).then((newUser) => {
 				// Store secrets in .env file and use environment variable
-				const token = jwt.sign({ _id: newUser._id }, process.env.SECRET);
+				const token = jwt.sign({
+					 _id: newUser._id,
+					 userName: newUser.userName,
+					email: newUser.email,
+					totalChange: newUser.totalChange,
+					positions: newUser.positions
+			}, process.env.SECRET);
+				
 				res.json({ token: token });		// Send token back to the user
 			}).catch((err) => {
 				console.log(err);
