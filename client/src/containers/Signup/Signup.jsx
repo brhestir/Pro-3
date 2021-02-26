@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import jwt from "jsonwebtoken";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const Signup = ({ setToken }) => {
   const [userName, setUserName] = useState("");
@@ -27,11 +28,16 @@ const Signup = ({ setToken }) => {
             if (err) {
               console.log(err);
             } else {
+              const decodedUserObject = jwt_decode(response.data.token);
+              console.log(decodedUserObject);
+
+              // This does nothing at present, need to set calback function on component callout in app.js
               setToken(response.data.token);
               // This MUST be converted into a modal or non-modal TOAST with UI-Framework
               alert(
                 `Signup success!  Your token is set as ${response.data.token}`
               );
+
               history.push("/positions/all");
             }
           }
