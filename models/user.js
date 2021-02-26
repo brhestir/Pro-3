@@ -5,9 +5,15 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
 	userName: {
 		type: String,
-		required: true,
 		trim: true,
-		required: "Enter a stock ticker symbol",
+	},
+	email: {
+		type: String,
+		trim: true,
+	},
+	password: {
+		type: String,
+		trim: true,
 	},
 	totalChange: {
 		type: Number,
