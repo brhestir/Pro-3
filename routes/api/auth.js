@@ -1,4 +1,4 @@
-// auth.js
+// ./routes/api/auth.js
 const router = require('express').Router();
 const {
 	createNewUser,
@@ -8,6 +8,7 @@ const {
 
 router.route("/signup").post(createNewUser);
 
-router.route("login").post(loginUser);
+// this route is currently authenticating using the user email address
+router.route("/login").post(loginUser);
 
 module.exports = router;
