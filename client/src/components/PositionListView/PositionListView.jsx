@@ -2,6 +2,7 @@
 // Contains PositionListViewItems
 import React from "react";
 import PositionListViewItem from "../PositionListViewItem/PositionListViewItem";
+import { v4 as uuidv4 } from "uuid";
 
 const PositionListView = ({ inputArray }) => {
   return (
@@ -12,13 +13,12 @@ const PositionListView = ({ inputArray }) => {
             <ul>
               {inputArray.map((curEl, index) => {
                 return (
-                  <div className="notification is-info">
+                  <div className="notification is-info" key={index.toString()}>
                     <PositionListViewItem
                       _id={curEl._id}
                       tickerSymbol={curEl.tickerSymbol}
                       buyPrice={curEl.buyPrice}
                       selPrice={curEl.selPrice}
-                      key={index}
                     />
                   </div>
                 );
