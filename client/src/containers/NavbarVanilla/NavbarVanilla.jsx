@@ -12,17 +12,18 @@ const NavbarVanilla = () => {
           </Link>
 
           {/* Burger button */}
-          <a
+          <Link
             role="button"
             className="navbar-burger"
             aria-label="menu"
             aria-expanded="false"
             data-target="navbarBasicExample"
+            to="#"
           >
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </a>
+          </Link>
           {/* End Burger button */}
         </div>
 

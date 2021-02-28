@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
+import React, { useState } from "react";
+//import API from "../../utils/API";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 
 // TODO: Change variable names so they're not so confusing.
@@ -37,14 +37,14 @@ const AddPosition = (props) => {
         //console.log(response);
 
         // Now that we have the position ID, create a new position in the user_DB_entry.positions field.
-        console.log(props.userObject._id);
-        console.log(response.data._id);
+        //console.log(props.userObject._id);
+        //console.log(response.data._id);
         axios
           .put(`/api/users/${props.userObject._id}`, {
             $push: { positions: response.data._id },
           })
           .then((response) => {
-            console.log(response);
+            //console.log(response);
           })
           .catch((err) => {
             console.log(`User ${props.userObject._id} update error: ${err}`);
