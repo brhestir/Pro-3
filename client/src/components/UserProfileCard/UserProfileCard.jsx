@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import batemanPixelPng from "../../assets/images/leoDC_pixel.png";
 
-const UserProfileCard = () => {
-  const [userName] = useState("Jordan Belfort");
+const UserProfileCard = (props) => {
   // const [userImageURL, setUserImageURL] = useState({ batemanPixelPng });
   const [userPercentChange] = useState(80);
 
@@ -24,7 +23,7 @@ const UserProfileCard = () => {
                       </figure>
                     </div>
                     <div className="media-content">
-                      <p className="title is-3">{userName}</p>
+                      <p className="title is-3">{props.userObject.userName}</p>
                       <p className="subtitle is-6">
                         <strong>% change: </strong>
                         <span className="tag">{userPercentChange}</span>

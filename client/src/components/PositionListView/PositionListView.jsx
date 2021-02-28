@@ -1,9 +1,11 @@
 // PositionListView Component
 // Contains PositionListViewItems
-import React from "react";
+import React, { useContext } from "react";
 import PositionListViewItem from "../PositionListViewItem/PositionListViewItem";
-
-const PositionListView = ({ inputArray }) => {
+import PositionsContext from "../../context/PositionsContext";
+const PositionListView = () => {
+  const inputArray = useContext(PositionsContext);
+  //console.log(inputArray); // DO NOT REMOVE THIS CONSOLE LOG IT IS MAKING IT RENDER CORRECTLY, NO IDEA WHY.  Perhaps race condition?
   return (
     <>
       <div className="columns is-mobile is-vcentered">
@@ -12,13 +14,12 @@ const PositionListView = ({ inputArray }) => {
             <ul>
               {inputArray.map((curEl, index) => {
                 return (
-                  <div className="notification is-info">
+                  <div className="notification is-info" key={index.toString()}>
                     <PositionListViewItem
                       _id={curEl._id}
                       tickerSymbol={curEl.tickerSymbol}
                       buyPrice={curEl.buyPrice}
                       selPrice={curEl.selPrice}
-                      key={index}
                     />
                   </div>
                 );

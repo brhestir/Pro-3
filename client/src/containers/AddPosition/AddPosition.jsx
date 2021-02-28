@@ -1,10 +1,11 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import API from "../../utils/API";
+import React, { useState } from "react";
+//import API from "../../utils/API";
+import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 
 // TODO: Change variable names so they're not so confusing.
 
-const AddPosition = () => {
+const AddPosition = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [stockName, setStockName] = useState("");
   const [searchTicker, setSearchTicker] = useState("");
@@ -24,17 +25,47 @@ const AddPosition = () => {
       });
   };
 
+  const handleBtnAddtoPortfolio = () => {
+    console.log("handleBtnAddToPortfolio() executing...");
+    axios
+      .post("/api/positions", {
+        stockFullName: searchQuery,
+        tickerSymbol: searchTicker,
+        buyPrice: stockPrice,
+      })
+      .then((response) => {
+        //console.log(response);
+
+        // Now that we have the position ID, create a new position in the user_DB_entry.positions field.
+        //console.log(props.userObject._id);
+        //console.log(response.data._id);
+        axios
+          .put(`/api/users/${props.userObject._id}`, {
+            $push: { positions: response.data._id },
+          })
+          .then((response) => {
+            //console.log(response);
+          })
+          .catch((err) => {
+            console.log(`User ${props.userObject._id} update error: ${err}`);
+          });
+      });
+  };
+
   return (
     <div>
       <div className="container notification is-primary">
         <div className="columns">
           <div className="column">
-            <div>This is the Add Position Page</div>
-            <div>UserName will go here</div>
+            <h1 className="title has-text-centered notification is-primary">
+              Add Position
+            </h1>
           </div>
         </div>
       </div>
-      <br></br>
+      <div className="block">
+        <UserProfileCard userObject={props.userObject} />
+      </div>
       <div className="container">
         <div className="columns">
           <div className="column notification is-primary">
@@ -63,7 +94,12 @@ const AddPosition = () => {
             <div>Ticker: {searchTicker}</div>
             <div>Price: {stockPrice}</div>
             {/* TODO: Make this button add position to database */}
-            {/* <button className="button is-link">Add to Portfolio</button> */}
+            <button
+              className="button is-link"
+              onClick={handleBtnAddtoPortfolio}
+            >
+              Add to Portfolio
+            </button>
           </div>
         </div>
       </div>

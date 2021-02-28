@@ -21,7 +21,7 @@ module.exports = {
 			.catch((err) => res.status(UNPROCESSABLE_ENTITY).json(err));
 	},
 	update: function(req, res) {
-		db.User.findOneAndUpdate(
+		db.User.findOneAndUpdate(					// https://stackoverflow.com/questions/33049707/push-items-into-mongo-array-via-mongoose
 			{
 				_id: req.params.id
 			},

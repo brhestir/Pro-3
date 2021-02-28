@@ -11,24 +11,28 @@ const INTERNAL_SERVER_ERROR	= 500;			// The server encountered an unexpected con
 // Defining methods for authController
 module.exports = {
 	createNewUser: function(req, res) {
+		
 		const userToCreate = {
-				email: req.body.email,
+				userName: req.body.userName,
+				email: req.body.email.toLowerCase(),
 		}
 		bcrypt.hash(req.body.password, NUM_SALT_ROUNDS, (err, hashedPassword) => {
 			if(err) throw new Error(err);
 			console.log(hashedPassword);
 			userToCreate.password = hashedPassword;
+			
 			db.User.create(userToCreate).then((newUser) => {
 				// Store secrets in .env file and use environment variable
 				const token = jwt.sign({
-					 _id: newUser._id,
-					 userName: newUser.userName,
+					_id: newUser._id,
+					userName: newUser.userName,
 					email: newUser.email,
 					totalChange: newUser.totalChange,
 					positions: newUser.positions
 			}, process.env.SECRET);
 				
 				res.json({ token: token });		// Send token back to the user
+
 			}).catch((err) => {
 				console.log(err);
 				res.status(INTERNAL_SERVER_ERROR).end();
@@ -42,7 +46,13 @@ module.exports = {
 			// Compare the previously hashed and stored password
 			bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
 				if(result) {
-					const token = jwt.sign({ _id: foundUser._id }, process.env.SECRET);
+					const token = jwt.sign({
+						_id: foundUser._id,
+						userName: foundUser.userName,
+						email: foundUser.email,
+						totalChange: foundUser.totalChange,
+						positions: foundUser.positions
+					}, process.env.SECRET);
 					res.json({ token: token });
 				} else {
 					// Alert that the (username OR password) is incorrect
