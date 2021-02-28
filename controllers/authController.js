@@ -11,18 +11,21 @@ const INTERNAL_SERVER_ERROR	= 500;			// The server encountered an unexpected con
 // Defining methods for authController
 module.exports = {
 	createNewUser: function(req, res) {
+		
 		const userToCreate = {
+				userName: req.body.userName,
 				email: req.body.email,
 		}
 		bcrypt.hash(req.body.password, NUM_SALT_ROUNDS, (err, hashedPassword) => {
 			if(err) throw new Error(err);
 			console.log(hashedPassword);
 			userToCreate.password = hashedPassword;
+			
 			db.User.create(userToCreate).then((newUser) => {
 				// Store secrets in .env file and use environment variable
 				const token = jwt.sign({
-					 _id: newUser._id,
-					 userName: newUser.userName,
+					_id: newUser._id,
+					userName: newUser.userName,
 					email: newUser.email,
 					totalChange: newUser.totalChange,
 					positions: newUser.positions

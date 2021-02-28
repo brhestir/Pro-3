@@ -2,7 +2,6 @@
 // Contains PositionListViewItems
 import React from "react";
 import PositionListViewItem from "../PositionListViewItem/PositionListViewItem";
-import { v4 as uuidv4 } from "uuid";
 
 const PositionListView = ({ inputArray }) => {
   return (

@@ -10,13 +10,11 @@ import Login from "./containers/Login/Login";
 
 function App() {
 
-	const [user, setUser] = useState({
-		_id: "",
-	});
+	const [userObject, setUserObject] = useState({});
 
 	useEffect( () => {
-		console.log(`user value is: ${user}`);
-	}, [user]);
+		console.log(userObject);
+	}, [userObject]);
 
 	return (
     <div className="App">
@@ -29,14 +27,14 @@ function App() {
 							<Route exact path="/positions/add" component={AddPosition} />
 							<Route exact path="/positions/edit" component={EditPositions} />
 							{/* <Route exact path="/positions/:id" component={SinglePosition} /> */}
-							<Route exact path="/positions/all" component={AllPositions} />
+							<Route exact path="/positions/all" component={ (props) => <AllPositions {...props} userObject={userObject} setUserObject={setUserObject} /> } />
 							<Route
 								exact path="/signup"
-								component={ (props) => <Signup {...props} setToken={setUser} /> }
+								component={ (props) => <Signup {...props} setUserObject={setUserObject} /> }
 							/>
 							<Route
 								exact path="/login"
-								component={ (props) => <Login {...props} setUser={setUser} /> }
+								component={ (props) => <Login {...props} setUserObject={setUserObject} /> }
 							/>
 						</Switch>
 					</Router>

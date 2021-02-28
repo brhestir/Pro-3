@@ -12,7 +12,7 @@ const NavbarVanilla = () => {
           </Link>
 
           {/* Burger button */}
-          <Link
+          <a
             role="button"
             className="navbar-burger"
             aria-label="menu"
@@ -22,7 +22,7 @@ const NavbarVanilla = () => {
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </Link>
+          </a>
           {/* End Burger button */}
         </div>
 

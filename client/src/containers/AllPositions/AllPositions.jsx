@@ -3,7 +3,7 @@ import axios from "axios";
 import PositionListView from "../../components/PositionListView/PositionListView";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 
-const AllPositions = () => {
+const AllPositions = (props) => {
   const [positions, setPositions] = useState([]);
 
   // 1. Hard code
@@ -29,7 +29,7 @@ const AllPositions = () => {
             All Positions
           </h1>
         </div>
-        <UserProfileCard />
+        <UserProfileCard userObject={props.userObject} />
         <PositionListView inputArray={positions} />
       </div>
     </>
