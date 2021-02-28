@@ -34,7 +34,21 @@ const AddPosition = (props) => {
         buyPrice: stockPrice,
       })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
+
+        // Now that we have the position ID, create a new position in the user_DB_entry.positions field.
+        console.log(props.userObject._id);
+        console.log(response.data._id);
+        axios
+          .put(`/api/users/${props.userObject._id}`, {
+            $push: { positions: response.data._id },
+          })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((err) => {
+            console.log(`User ${props.userObject._id} update error: ${err}`);
+          });
       });
   };
 
