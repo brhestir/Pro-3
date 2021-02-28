@@ -13,6 +13,7 @@ function App() {
 	const [userObject, setUserObject] = useState({});
 
 	useEffect( () => {
+		console.log("userObject updated w/ useEffect hook in App.js");
 		console.log(userObject);
 	}, [userObject]);
 

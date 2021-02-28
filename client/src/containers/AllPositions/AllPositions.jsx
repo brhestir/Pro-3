@@ -1,20 +1,38 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import PositionListView from "../../components/PositionListView/PositionListView";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
-
+import PositionsContext from "../../context/PositionsContext";
 const AllPositions = (props) => {
   const [positions, setPositions] = useState([]);
 
-  // 1. Hard code
-  // 2. Abstract into variables (state or props)
-  // 3. Dynamically get the data
-
   useEffect(() => {
+    // WE HAVE USER _id already, need to get the updated userOBJECT
+    console.log("props.userObject._id:");
+    console.log(props.userObject._id);
     axios
-      .get("/api/positions")
+      .get(`/api/users/${props.userObject._id}`)
       .then((response) => {
-        setPositions(response.data); // update state with returned data
+        let positionIdArray = response.data.positions;
+        console.log(positionIdArray);
+
+        let positionDataArray = [];
+        response.data.positions.map(function (currentPositionID) {
+          axios
+            .get(`/api/positions/${currentPositionID}`)
+            .then((response) => {
+              //console.log(response.data);
+              positionDataArray.push(response.data);
+            })
+            .catch((err) => {
+              if (err) {
+                throw err;
+              }
+            });
+        }); // end of MAP
+        console.log("positionDataArray: ");
+        console.log(positionDataArray);
+        setPositions(positionDataArray); // update state with returned data
       })
       .catch((err) => {
         console.log(`[e] axios.get(/api/positions) error: ${err}`);
@@ -30,7 +48,10 @@ const AllPositions = (props) => {
           </h1>
         </div>
         <UserProfileCard userObject={props.userObject} />
-        <PositionListView inputArray={positions} />
+        {/*value passed to provider must be declared with useState*/}
+        <PositionsContext.Provider value={positions}>
+          <PositionListView />
+        </PositionsContext.Provider>
       </div>
     </>
   );

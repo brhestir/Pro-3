@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import jwt from "jsonwebtoken";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const Login = ({ setUserObject }) => {
   const [userName, setUserName] = useState("");
@@ -27,8 +28,11 @@ const Login = ({ setUserObject }) => {
             if (err) {
               console.log(err); // If login is invalid, perform "foo"
             } else {
+              const decodedUserObject = jwt_decode(response.data.token);
+              console.log(decodedUserObject);
+
               // Set the user-logged-in-token & do something with it
-              setUserObject(decoded);
+              setUserObject(decodedUserObject);
               // This MUST be converted into a modal or non-modal TOAST with UI-Framework
               alert(
                 `Login success!  Your token is set as ${response.data.token}`
@@ -110,10 +114,7 @@ const Login = ({ setUserObject }) => {
                   <i className="fas fa-check"></i>
                 </span>
               </div>
-              <p className="help is-success">
-                Some email addresses may already be in use. Consider providing
-                feedback to the user at runtime.
-              </p>
+              <p className="help is-success">Email address goes here.</p>
             </div>
           </div>
 
@@ -140,10 +141,7 @@ const Login = ({ setUserObject }) => {
                   <i className="fas fa-check"></i>
                 </span>
               </div>
-              <p className="help is-success">
-                Some passwords may be to short for example. Consider providing
-                feedback to the user at runtime.
-              </p>
+              <p className="help is-success">Enter your password.</p>
             </div>
           </div>
 
