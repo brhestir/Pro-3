@@ -3,11 +3,14 @@ const mongoose = require(`mongoose`);
 const Schema = mongoose.Schema;
 
 const positionSchema = new Schema({
+	stockFullName: {
+		type: String,
+		trim: true,
+	},
 	tickerSymbol: {
 		type: String,
 		required: true,
 		trim: true,
-		required: "Enter a stock ticker symbol",
 	},
 	buyPrice: {
 		type: Number,

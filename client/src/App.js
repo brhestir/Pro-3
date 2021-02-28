@@ -24,7 +24,7 @@ function App() {
 						<NavbarVanilla />
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route exact path="/positions/add" component={AddPosition} />
+							<Route exact path="/positions/add" component={ (props) => <AddPosition {...props} userObject={userObject} setUserObject={setUserObject} /> } />
 							<Route exact path="/positions/edit" component={EditPositions} />
 							{/* <Route exact path="/positions/:id" component={SinglePosition} /> */}
 							<Route exact path="/positions/all" component={ (props) => <AllPositions {...props} userObject={userObject} setUserObject={setUserObject} /> } />
