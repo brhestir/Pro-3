@@ -14,7 +14,7 @@ module.exports = {
 		
 		const userToCreate = {
 				userName: req.body.userName,
-				email: req.body.email,
+				email: req.body.email.toLowerCase(),
 		}
 		bcrypt.hash(req.body.password, NUM_SALT_ROUNDS, (err, hashedPassword) => {
 			if(err) throw new Error(err);
@@ -32,6 +32,7 @@ module.exports = {
 			}, process.env.SECRET);
 				
 				res.json({ token: token });		// Send token back to the user
+
 			}).catch((err) => {
 				console.log(err);
 				res.status(INTERNAL_SERVER_ERROR).end();
@@ -45,7 +46,13 @@ module.exports = {
 			// Compare the previously hashed and stored password
 			bcrypt.compare(req.body.password, foundUser.password, (err, result) => {
 				if(result) {
-					const token = jwt.sign({ _id: foundUser._id }, process.env.SECRET);
+					const token = jwt.sign({
+						_id: foundUser._id,
+						userName: foundUser.userName,
+						email: foundUser.email,
+						totalChange: foundUser.totalChange,
+						positions: foundUser.positions
+					}, process.env.SECRET);
 					res.json({ token: token });
 				} else {
 					// Alert that the (username OR password) is incorrect
