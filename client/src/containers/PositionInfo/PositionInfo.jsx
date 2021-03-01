@@ -1,6 +1,6 @@
 import React from "react";
 
-const Home = () => {
+const PositionInfo = () => {
   return (
     <>
       <div className="container">
@@ -9,7 +9,7 @@ const Home = () => {
           <div className="level">
             <div className="level-item has-text-centered">
               <div>
-                <h1 className="is-size-1">This is the home page.</h1>
+                <h1 className="is-size-1">Position Info</h1>
               </div>
             </div>
           </div>
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default PositionInfo;

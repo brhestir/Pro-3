@@ -14,7 +14,10 @@ const PositionListView = () => {
             <ul>
               {inputArray.map((curEl, index) => {
                 return (
-                  <div className="notification is-info" key={index.toString()}>
+                  <div
+                    className="notification is-info is-light"
+                    key={index.toString()}
+                  >
                     <PositionListViewItem
                       _id={curEl._id}
                       tickerSymbol={curEl.tickerSymbol}

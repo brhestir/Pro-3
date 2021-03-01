@@ -41,6 +41,12 @@ const NavbarVanilla = () => {
             <Link className="navbar-item" to="/positions/all">
               Positions: All
             </Link>
+            <Link className="navbar-item" to="/positions/info">
+              Position Info
+            </Link>
+            <Link className="navbar-item" to="/loading">
+              Loading Page
+            </Link>
           </div>
         </div>
 

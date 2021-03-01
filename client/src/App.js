@@ -7,6 +7,8 @@ import Home from "./containers/Home/Home";
 import NavbarVanilla from "./containers/NavbarVanilla/NavbarVanilla";
 import Signup from "./containers/Signup/Signup";
 import Login from "./containers/Login/Login";
+import PositionInfo from "./containers/PositionInfo/PositionInfo";
+import Loading from "./containers/Loading/Loading";
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
 							<Route exact path="/positions/edit" component={EditPositions} />
 							{/* <Route exact path="/positions/:id" component={SinglePosition} /> */}
 							<Route exact path="/positions/all" component={ (props) => <AllPositions {...props} userObject={userObject} setUserObject={setUserObject} /> } />
+							<Route exact path="/positions/info" component={PositionInfo} />
 							<Route
 								exact path="/signup"
 								component={ (props) => <Signup {...props} setUserObject={setUserObject} /> }
@@ -37,6 +40,7 @@ function App() {
 								exact path="/login"
 								component={ (props) => <Login {...props} setUserObject={setUserObject} /> }
 							/>
+							<Route exact path="/loading" component={Loading}/>
 						</Switch>
 					</Router>
       
