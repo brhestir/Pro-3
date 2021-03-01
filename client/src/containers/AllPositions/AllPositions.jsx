@@ -14,26 +14,28 @@ const AllPositions = (props) => {
     axios
       .get(`/api/users/${props.userObject._id}`)
       .then((response) => {
+        setPositions(response.data.positions);
+
         //let positionIdArray = response.data.positions;
         //console.log(positionIdArray);
 
-        let positionDataArray = [];
-        response.data.positions.map(function (currentPositionID) {
-          axios
-            .get(`/api/positions/${currentPositionID}`)
-            .then((response) => {
-              //console.log(response.data);
-              positionDataArray.push(response.data);
-            })
-            .catch((err) => {
-              if (err) {
-                throw err;
-              }
-            });
-        }); // end of MAP
+        // let positionDataArray = [];
+        // response.data.positions.map(function (currentPositionID) {
+        // axios
+        //   .get(`/api/positions/${currentPositionID}`)
+        //   .then((response) => {
+        //     //console.log(response.data);
+        //     setPositions(response.data); // update state with returned data
+        // 		// positionDataArray.push(response.data);
+        //   })
+        //   .catch((err) => {
+        //     if (err) {
+        //       throw err;
+        //     }
+        //   });
+        // }); // end of MAP
         //console.log("positionDataArray: ");
         //console.log(positionDataArray);
-        setPositions(positionDataArray); // update state with returned data
       })
       .catch((err) => {
         console.log(`[e] axios.get(/api/positions) error: ${err}`);

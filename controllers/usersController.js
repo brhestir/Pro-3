@@ -12,6 +12,7 @@ module.exports = {
 	},
 	findById: function(req, res) {
 		db.User.findById(req.params.id)
+			.populate("positions")		// look this up, thank you Peter
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => res.status(UNPROCESSABLE_ENTITY).json(err));
 	},
