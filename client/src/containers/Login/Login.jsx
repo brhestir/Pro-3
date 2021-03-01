@@ -34,9 +34,7 @@ const Login = ({ setUserObject }) => {
               // Set the user-logged-in-token & do something with it
               setUserObject(decodedUserObject);
               // This MUST be converted into a modal or non-modal TOAST with UI-Framework
-              alert(
-                `Login success!  Your token is set as ${response.data.token}`
-              );
+              alert(`You are now logged in!`);
 
               // If login valid, go to logged-in-STATE
               history.push("/positions/all");
@@ -50,116 +48,135 @@ const Login = ({ setUserObject }) => {
   };
 
   return (
-    <div className="container">
-      <div className="columns">
-        <div className="column is-12">
-          <h1 className="is-size-1 has-text-centered">
-            Welcome Back! Please login to continue:
-          </h1>
+    <>
+      <div className="container">
+        <div className="columns">
+          <div className="column is-12">
+            <h1 className="is-size-1 has-text-centered">
+              Welcome Back! Please login to continue:
+            </h1>
+          </div>
+        </div>
+
+        <div className="columns">
+          <form className="column is-12" onSubmit={handleFormSubmit}>
+            <div className="columns">
+              <div className="column is-3"></div>
+              <div className="field column is-6">
+                <label className="label">Username:</label>
+                <div className="control has-icons-left has-icons-right">
+                  <input
+                    className="input"
+                    id="userName"
+                    type="text"
+                    name="userName"
+                    value={userName}
+                    placeholder="Enter username"
+                    onChange={(e) => {
+                      setUserName(e.target.value);
+                    }}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-user"></i>
+                  </span>
+                  <span className="icon is-small is-right">
+                    <i className="fas fa-check"></i>
+                  </span>
+                </div>
+                <p className="help is-success">
+                  Many usernames are available. Consider providing feedback to
+                  the user at runtime.
+                </p>
+              </div>
+            </div>
+
+            <div className="columns">
+              <div className="column is-3"></div>
+              <div className="field column is-6">
+                <label className="label">Email:</label>
+                <div className="control has-icons-left has-icons-right">
+                  <input
+                    className="input"
+                    id="email"
+                    type="text"
+                    name="email"
+                    value={email}
+                    placeholder="Enter email address"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-envelope"></i>
+                  </span>
+                  <span className="icon is-small is-right">
+                    <i className="fas fa-check"></i>
+                  </span>
+                </div>
+                <p className="help is-success">Email address goes here.</p>
+              </div>
+            </div>
+
+            <div className="columns">
+              <div className="column is-3"></div>
+              <div className="field column is-6">
+                <label className="label">Password:</label>
+                <div className="control has-icons-left has-icons-right">
+                  <input
+                    className="input"
+                    id="password"
+                    type="password"
+                    name="password"
+                    value={password}
+                    placeholder="Enter password"
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-key"></i>
+                  </span>
+                  <span className="icon is-small is-right">
+                    <i className="fas fa-check"></i>
+                  </span>
+                </div>
+                <p className="help is-success">Enter your password.</p>
+              </div>
+            </div>
+
+            <div className="has-text-centered">
+              <button
+                className="button is-primary is-large is-outlined"
+                type="submit"
+                value="Submit Input"
+              >
+                <span className="icon">
+                  <i className="fab fa-github"></i>
+                </span>
+                <span>Log In</span>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
 
-      <div className="columns">
-        <form className="column is-12" onSubmit={handleFormSubmit}>
-          <div className="columns">
-            <div className="column is-3"></div>
-            <div className="field column is-6">
-              <label className="label">Username:</label>
-              <div className="control has-icons-left has-icons-right">
-                <input
-                  className="input"
-                  id="userName"
-                  type="text"
-                  name="userName"
-                  value={userName}
-                  placeholder="Enter username"
-                  onChange={(e) => {
-                    setUserName(e.target.value);
-                  }}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-user"></i>
-                </span>
-                <span className="icon is-small is-right">
-                  <i className="fas fa-check"></i>
-                </span>
-              </div>
-              <p className="help is-success">
-                Many usernames are available. Consider providing feedback to the
-                user at runtime.
-              </p>
-            </div>
-          </div>
-
-          <div className="columns">
-            <div className="column is-3"></div>
-            <div className="field column is-6">
-              <label className="label">Email:</label>
-              <div className="control has-icons-left has-icons-right">
-                <input
-                  className="input"
-                  id="email"
-                  type="text"
-                  name="email"
-                  value={email}
-                  placeholder="Enter email address"
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-envelope"></i>
-                </span>
-                <span className="icon is-small is-right">
-                  <i className="fas fa-check"></i>
-                </span>
-              </div>
-              <p className="help is-success">Email address goes here.</p>
-            </div>
-          </div>
-
-          <div className="columns">
-            <div className="column is-3"></div>
-            <div className="field column is-6">
-              <label className="label">Password:</label>
-              <div className="control has-icons-left has-icons-right">
-                <input
-                  className="input"
-                  id="password"
-                  type="password"
-                  name="password"
-                  value={password}
-                  placeholder="Enter password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-                <span className="icon is-small is-left">
-                  <i className="fas fa-key"></i>
-                </span>
-                <span className="icon is-small is-right">
-                  <i className="fas fa-check"></i>
-                </span>
-              </div>
-              <p className="help is-success">Enter your password.</p>
-            </div>
-          </div>
-
-          <div className="has-text-centered">
-            <button
-              className="button is-primary is-large is-outlined"
-              type="submit"
-              value="Submit Input"
-            >
-              <span className="icon">
-                <i className="fab fa-github"></i>
-              </span>
-              <span>Log In</span>
-            </button>
-          </div>
-        </form>
+      {/* add "is-active" to below modal div to activate, use conditional rendering and "login success state?" */}
+      <div className="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+            <p>You are now logged in!</p>
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-success">Continue</button>
+          </footer>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
