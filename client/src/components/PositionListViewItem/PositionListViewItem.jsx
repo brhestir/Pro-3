@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 
 const PositionListItem = (props) => {
@@ -7,10 +8,20 @@ const PositionListItem = (props) => {
 
   const btnSellClickHandler = (e) => {
     console.log(`btnSellClickHandler: ${props._id}`);
+    console.log(props._id);
   };
 
   const btnDeleteClickHandler = (e) => {
     console.log(`btnDeleteClickHandler: ${props._id}`);
+
+    axios
+      .delete(`/api/positions/${props._id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
