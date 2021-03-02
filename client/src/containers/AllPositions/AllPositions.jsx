@@ -8,7 +8,7 @@ import GlobalContext from "../../context/GlobalContext";
 const AllPositions = (props) => {
   const [positions, setPositions] = useState([]);
 
-  const { userObject, setUserObject, token, setToken } = useContext(
+  const { userObject /*, setUserObject, token, setToken*/ } = useContext(
     GlobalContext
   );
 

@@ -12,7 +12,7 @@ const AddPosition = (props) => {
   const [searchTicker, setSearchTicker] = useState("");
   const [stockPrice, setStockPrice] = useState("");
 
-  const { userObject, setUserObject, token, setToken } = useContext(
+  const { userObject /*, setUserObject, token, setToken*/ } = useContext(
     GlobalContext
   );
 
@@ -87,13 +87,14 @@ const AddPosition = (props) => {
                   setStockName(e.target.value);
                 }}
               />
-              <a
-                class="waves-effect waves-light btn-large"
+              <button
+                className="waves-effect waves-light btn-large"
                 type="submit"
                 onClick={handleSubmit}
               >
-                <i class="material-icons right">show_chart</i>Get Current Price
-              </a>
+                <i className="material-icons right">show_chart</i>Get Current
+                Price
+              </button>
             </div>
 
             <div className="col s6 left-align green accent-3">
@@ -101,13 +102,14 @@ const AddPosition = (props) => {
               <div>Stock: {searchQuery}</div>
               <div>Ticker: {searchTicker}</div>
               <div>Price: {stockPrice}</div>
-              <a
-                class="waves-effect waves-light btn-large"
+              <button
+                className="waves-effect waves-light btn-large"
                 type="submit"
                 onClick={handleBtnAddtoPortfolio}
               >
-                <i class="material-icons right">attach_money</i>Add to Portfolio
-              </a>
+                <i className="material-icons right">attach_money</i>Add to
+                Portfolio
+              </button>
             </div>
           </div>
         </div>

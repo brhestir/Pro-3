@@ -6,11 +6,7 @@ const PositionListItem = (props) => {
   const [currentPrice, setCurrentPrice] = useState("");
   const totalReturn = ((currentPrice - props.buyPrice) / props.buyPrice) * 100;
 
-  let { userObject, setUserObject } = useContext(GlobalContext);
-
-  const btnInfoClickHandler = (e) => {
-    console.log(`btnInfoClickHandler: ${props._id}`);
-  };
+  let { userObject /*, setUserObject*/ } = useContext(GlobalContext);
 
   const btnSellClickHandler = (e) => {
     console.log(
@@ -49,13 +45,11 @@ const PositionListItem = (props) => {
   };
 
   useEffect(() => {
-    console.log(props);
     axios
       .get(
         `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
-        console.log(res.data);
         setCurrentPrice(res.data.data.intraday[0].last);
       });
   }, []);
@@ -71,19 +65,19 @@ const PositionListItem = (props) => {
 
           {/* <div className="column is-2">_id: {props._id}</div> */}
           <div className="column is-4">
-            <div class="buttons has-addons is-centered">
-              <a
-                class="waves-effect waves-light green accent-3 btn"
+            <div className="buttons has-addons is-centered">
+              <button
+                className="waves-effect waves-light green accent-3 btn"
                 onClick={btnSellClickHandler}
               >
-                <i class="material-icons right">attach_money</i>SELL
-              </a>
-              <a
-                class="waves-effect waves-light red darken-4 btn"
+                <i className="material-icons right">attach_money</i>SELL
+              </button>
+              <button
+                className="waves-effect waves-light red darken-4 btn"
                 onClick={btnDeleteClickHandler}
               >
-                <i class="material-icons right">delete_forever</i>DELETE
-              </a>
+                <i className="material-icons right">delete_forever</i>DELETE
+              </button>
             </div>
           </div>
         </div>

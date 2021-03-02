@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import batemanPixelPng from "../../assets/images/leoDC_pixel.png";
 import "./UserProfileCard.css";
 
@@ -8,10 +8,10 @@ const UserProfileCard = (props) => {
 
   return (
     <>
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
+      <div className="row">
+        <div className="col s12 m6">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
               <div className="row">
                 <div className="col s4 m6">
                   <img

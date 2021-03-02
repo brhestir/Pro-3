@@ -10,7 +10,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const { userObject, setUserObject, token, setToken } = useContext(
+  const { /*userObject,*/ setUserObject, /*token,*/ setToken } = useContext(
     GlobalContext
   );
 
@@ -65,31 +65,34 @@ const Signup = () => {
         </div>
 
         <div className="row">
-          <form className="col s6 push-s3 center-align" onSubmit={handleFormSubmit}>
-                <label className="label">Username:</label>
-                <div className="control has-icons-left has-icons-right">
-                  <input
-                    className="input"
-                    id="userName"
-                    type="text"
-                    name="userName"
-                    value={userName}
-                    placeholder="Enter username"
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-user"></i>
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-check"></i>
-                  </span>
-                </div>
-                <p className="help is-success">
-                  Many usernames are available. Consider providing feedback to
-                  the user at runtime.
-                </p>
+          <form
+            className="col s6 push-s3 center-align"
+            onSubmit={handleFormSubmit}
+          >
+            <label className="label">Username:</label>
+            <div className="control has-icons-left has-icons-right">
+              <input
+                className="input"
+                id="userName"
+                type="text"
+                name="userName"
+                value={userName}
+                placeholder="Enter username"
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-user"></i>
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
+            </div>
+            <p className="help is-success">
+              Many usernames are available. Consider providing feedback to the
+              user at runtime.
+            </p>
 
             <div className="columns">
               <div className="column is-3"></div>
@@ -151,34 +154,33 @@ const Signup = () => {
             </div>
 
             <div className="has-text-centered">
-
-            <button
-                class="btn waves-effect waves-light"
+              <button
+                className="btn waves-effect waves-light"
                 type="submit"
                 name="action"
                 value="Submit Input"
               >
                 Sign Up
-                <i class="fab fa-github right"></i>
+                <i className="fab fa-github right"></i>
               </button>
-              </div>
+            </div>
           </form>
         </div>
       </div>
 
       {/* add "is-active" to below modal div to activate, use conditional rendering and "login success state?" */}
       <div className="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Modal title</p>
-            <button class="delete" aria-label="close"></button>
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Modal title</p>
+            <button className="delete" aria-label="close"></button>
           </header>
-          <section class="modal-card-body">
+          <section className="modal-card-body">
             <p>You are now logged in!</p>
           </section>
-          <footer class="modal-card-foot">
-            <button class="button is-success">Continue</button>
+          <footer className="modal-card-foot">
+            <button className="button is-success">Continue</button>
           </footer>
         </div>
       </div>
