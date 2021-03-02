@@ -1,15 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import PositionListView from "../../components/PositionListView/PositionListView";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 import PositionsContext from "../../context/PositionsContext";
+import GlobalContext from "../../context/GlobalContext";
 
 const AllPositions = (props) => {
   const [positions, setPositions] = useState([]);
 
+  const { userObject, setUserObject, token, setToken } = useContext(
+    GlobalContext
+  );
+
   useEffect(() => {
     axios
-      .get(`/api/users/${props.userObject._id}`)
+      .get(`/api/users/${userObject._id}`)
       .then((response) => {
         setPositions(response.data.positions);
       })
@@ -26,7 +31,7 @@ const AllPositions = (props) => {
             All Positions
           </h1>
         </div>
-        <UserProfileCard userObject={props.userObject} />
+        <UserProfileCard userObject={userObject} />
         {/*value passed to provider must be declared with useState*/}
         <PositionsContext.Provider value={positions}>
           <PositionListView />

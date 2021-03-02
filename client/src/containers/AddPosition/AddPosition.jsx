@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 //import API from "../../utils/API";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
+import GlobalContext from "../../context/GlobalContext";
 
 // TODO: Change variable names so they're not so confusing.
 
@@ -10,6 +11,10 @@ const AddPosition = (props) => {
   const [stockName, setStockName] = useState("");
   const [searchTicker, setSearchTicker] = useState("");
   const [stockPrice, setStockPrice] = useState("");
+
+  const { userObject, setUserObject, token, setToken } = useContext(
+    GlobalContext
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -40,14 +45,14 @@ const AddPosition = (props) => {
         //console.log(props.userObject._id);
         //console.log(response.data._id);
         axios
-          .put(`/api/users/${props.userObject._id}`, {
+          .put(`/api/users/${userObject._id}`, {
             $push: { positions: response.data._id },
           })
           .then((response) => {
             //console.log(response);
           })
           .catch((err) => {
-            console.log(`User ${props.userObject._id} update error: ${err}`);
+            console.log(`User ${userObject._id} update error: ${err}`);
           });
       });
   };
@@ -62,7 +67,7 @@ const AddPosition = (props) => {
         </div>
         <div className="row">
           <div className="col s12">
-            <UserProfileCard userObject={props.userObject} />
+            <UserProfileCard userObject={userObject} />
           </div>
         </div>
       </div>
