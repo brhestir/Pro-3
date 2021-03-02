@@ -58,19 +58,14 @@ const Signup = () => {
   return (
     <>
       <div className="container">
-        <div className="columns">
-          <div className="column is-12">
-            <h1 className="is-size-1 has-text-centered">
-              Welcome! Please Create an Account:
-            </h1>
+        <div className="row">
+          <div className="col s12 center-align orange accent-1">
+            <h1>Welcome! Please Create an Account:</h1>
           </div>
         </div>
 
-        <div className="columns">
-          <form className="column is-12" onSubmit={handleFormSubmit}>
-            <div className="columns">
-              <div className="column is-3"></div>
-              <div className="field column is-6">
+        <div className="row">
+          <form className="col s6 push-s3 center-align" onSubmit={handleFormSubmit}>
                 <label className="label">Username:</label>
                 <div className="control has-icons-left has-icons-right">
                   <input
@@ -95,8 +90,6 @@ const Signup = () => {
                   Many usernames are available. Consider providing feedback to
                   the user at runtime.
                 </p>
-              </div>
-            </div>
 
             <div className="columns">
               <div className="column is-3"></div>
@@ -158,17 +151,17 @@ const Signup = () => {
             </div>
 
             <div className="has-text-centered">
-              <button
-                className="button is-primary is-large is-outlined"
+
+            <button
+                class="btn waves-effect waves-light"
                 type="submit"
+                name="action"
                 value="Submit Input"
               >
-                <span className="icon">
-                  <i className="fab fa-github"></i>
-                </span>
-                <span>Sign Up</span>
+                Sign Up
+                <i class="fab fa-github right"></i>
               </button>
-            </div>
+              </div>
           </form>
         </div>
       </div>
