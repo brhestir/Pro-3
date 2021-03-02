@@ -56,45 +56,41 @@ const Login = () => {
   return (
     <>
       <div className="container">
-        <div className="columns">
-          <div className="column is-12">
-            <h1 className="is-size-1 has-text-centered">
-              Welcome Back! Please login to continue:
-            </h1>
+        <div className="row">
+          <div className="col s12 center-align orange accent-1">
+            <h1>Welcome Back! Please login to continue:</h1>
           </div>
         </div>
 
-        <div className="columns">
-          <form className="column is-12" onSubmit={handleFormSubmit}>
-            <div className="columns">
-              <div className="column is-3"></div>
-              <div className="field column is-6">
-                <label className="label">Username:</label>
-                <div className="control has-icons-left has-icons-right">
-                  <input
-                    className="input"
-                    id="userName"
-                    type="text"
-                    name="userName"
-                    value={userName}
-                    placeholder="Enter username"
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
-                  />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-user"></i>
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-check"></i>
-                  </span>
-                </div>
-                <p className="help is-success">
-                  Many usernames are available. Consider providing feedback to
-                  the user at runtime.
-                </p>
-              </div>
+        <div className="row">
+          <form
+            className="col s6 push-s3 center-align"
+            onSubmit={handleFormSubmit}
+          >
+            <label className="label">Username:</label>
+            <div className="control has-icons-left has-icons-right">
+              <input
+                className="input"
+                id="userName"
+                type="text"
+                name="userName"
+                value={userName}
+                placeholder="Enter username"
+                onChange={(e) => {
+                  setUserName(e.target.value);
+                }}
+              />
+              <span className="icon is-small is-left">
+                <i className="fas fa-user"></i>
+              </span>
+              <span className="icon is-small is-right">
+                <i className="fas fa-check"></i>
+              </span>
             </div>
+            <p className="help is-success">
+              Many usernames are available. Consider providing feedback to the
+              user at runtime.
+            </p>
 
             <div className="columns">
               <div className="column is-3"></div>
@@ -152,14 +148,13 @@ const Login = () => {
 
             <div className="has-text-centered">
               <button
-                className="button is-primary is-large is-outlined"
+                class="btn waves-effect waves-light"
                 type="submit"
+                name="action"
                 value="Submit Input"
               >
-                <span className="icon">
-                  <i className="fab fa-github"></i>
-                </span>
-                <span>Log In</span>
+                Log In
+                <i class="fab fa-github right"></i>
               </button>
             </div>
           </form>

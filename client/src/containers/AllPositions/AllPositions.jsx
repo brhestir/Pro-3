@@ -25,9 +25,9 @@ const AllPositions = (props) => {
 
   return (
     <>
-      <div className="container">
-        <div className="block">
-          <h1 className="title has-text-centered notification is-primary">
+      <div className="container center-align">
+        <div className="row light-blue accent-3">
+          <h1>
             All Positions
           </h1>
         </div>
