@@ -14,31 +14,11 @@ const NavbarVanilla = () => {
           <Link className="navbar-item" to="/">
             <img src={businessManPng} width="30" alt="WSB chap" />
           </Link>
-
-          {/* Burger button */}
-          <Link
-            role="button"
-            className="navbar-burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-            to="#"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </Link>
-          {/* End Burger button */}
         </div>
 
-        {/* <div id="navbarBasicExample" className="navbar-menu"> */}
-        {/* <div className="navbar-start"> */}
+        {/* TODO: Do we need a burger button? */}
+
         <ul class="left hide-on-med-and-down">
-          <li>
-            <Link className="navbar-item" to="/">
-              Home
-            </Link>
-          </li>
           <li>
             <Link className="navbar-item" to="/positions/add">
               Add a Position
@@ -50,8 +30,6 @@ const NavbarVanilla = () => {
             </Link>
           </li>
         </ul>
-        {/* </div> */}
-        {/* </div> */}
 
         <ul class="right hide-on-med-and-down">
           <li>
