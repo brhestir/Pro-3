@@ -33,19 +33,10 @@ const NavbarVanilla = () => {
               Home
             </Link>
             <Link className="navbar-item" to="/positions/add">
-              Position: Add
-            </Link>
-            <Link className="navbar-item" to="/positions/edit">
-              Edit Positions
+              Add a Position
             </Link>
             <Link className="navbar-item" to="/positions/all">
-              Positions: All
-            </Link>
-            <Link className="navbar-item" to="/positions/info">
-              Position Info
-            </Link>
-            <Link className="navbar-item" to="/loading">
-              Loading Page
+              View Your Positions
             </Link>
           </div>
         </div>
