@@ -15,6 +15,8 @@ const PositionListItem = (props) => {
   const btnSellClickHandler = (e) => {
     console.log(`btnSellClickHandler: ${props._id}`);
     console.log(props._id);
+
+    console.log(`Current userObject userName is: ${userObject.user}`);
   };
 
   const btnDeleteClickHandler = (e) => {
@@ -34,7 +36,7 @@ const PositionListItem = (props) => {
     console.log(props);
     axios
       .get(
-        `http://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+        `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
         console.log(res.data);
