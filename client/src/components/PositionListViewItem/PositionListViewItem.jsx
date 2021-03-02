@@ -13,10 +13,18 @@ const PositionListItem = (props) => {
   };
 
   const btnSellClickHandler = (e) => {
-    console.log(`btnSellClickHandler: ${props._id}`);
-    console.log(props._id);
+    console.log(
+      `[Sell request] Call into btnSellClickHandler from listItem for id: ${props._id}`
+    );
+    console.log(
+      `[Sell request] Current userObject userName is: ${userObject.userName}`
+    );
+    console.log(`[Sell request] Current user _id is: ${userObject._id}`);
+    console.log(`[Sell request] Bought price: ${props.buyPrice} `);
+    console.log(`[Sell request] Sell price: ${currentPrice} `);
+    console.log(`[Sell request] item % change: ${totalReturn}`);
 
-    console.log(`Current userObject userName is: ${userObject.user}`);
+    //axios.put(`/api/users/${userObject._id}`, {});
   };
 
   const btnDeleteClickHandler = (e) => {
