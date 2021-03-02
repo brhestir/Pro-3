@@ -1,7 +1,11 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const PositionListItem = (props) => {
+
+  const [currentPrice, setCurrentPrice] = useState("");
+  const totalReturn = ((currentPrice - props.buyPrice) / props.buyPrice) * 100;
+
   const btnInfoClickHandler = (e) => {
     console.log(`btnInfoClickHandler: ${props._id}`);
   };
@@ -24,14 +28,30 @@ const PositionListItem = (props) => {
       });
   };
 
+  useEffect(() => {
+    console.log(props)
+    axios
+      .get(
+        `http://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setCurrentPrice(res.data.data.intraday[0].last);
+      });
+  },[])
+
+
   return (
     <>
       <div className="list-item">
         <div className="level-item">
           <div className="column is-2">Ticker: {props.tickerSymbol}</div>
           <div className="column is-2">Buy Price: ${props.buyPrice}</div>
-          <div className="column is-2">Sell Price: ${props.selPrice}</div>
-          <div className="column is-2">_id: {props._id}</div>
+          <div className="column is-2">Current Price: ${currentPrice}</div>
+          <div className="column is-2">Total Return: {totalReturn.toFixed(2)}%</div>
+
+
+          {/* <div className="column is-2">_id: {props._id}</div> */}
           <div className="column is-4">
             <div class="buttons has-addons is-centered">
               <button
