@@ -56,7 +56,7 @@ const AddPosition = (props) => {
     <div>
       <div className="container">
         <div className="row">
-          <div className="col s12 center-align">
+          <div className="col s12 center-align  purple accent-2">
             <h1>Add Position</h1>
           </div>
         </div>
@@ -69,9 +69,9 @@ const AddPosition = (props) => {
 
       <div className="container">
         <div className="row">
-          <div className="col s12 center-align">
+          <div className="col s12 center-align  purple accent-2">
             <h1>Add Position</h1>
-            <div className="input-field col s6 center-align">
+            <div className="input-field col s6 center-align deep-orange darken-1">
               <input
                 className="input"
                 type="text"
@@ -91,7 +91,7 @@ const AddPosition = (props) => {
               </a>
             </div>
 
-            <div className="col s6 left-align">
+            <div className="col s6 left-align green accent-3">
               <div>Search information will show up under here:</div>
               <div>Stock: {searchQuery}</div>
               <div>Ticker: {searchTicker}</div>
