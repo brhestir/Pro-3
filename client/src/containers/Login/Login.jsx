@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import jwt from "jsonwebtoken";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
+import GlobalContext from "../../context/GlobalContext";
 
-const Login = ({ setUserObject, setJwt }) => {
+const Login = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { userObject, setUserObject, token, setToken } = useContext(
+    GlobalContext
+  );
 
   const history = useHistory();
 
@@ -30,7 +35,7 @@ const Login = ({ setUserObject, setJwt }) => {
             } else {
               // Call the setJwt callback to set the jwt state variable in App.js
               console.log(`[i] Setting jwt...`);
-              setJwt(response.data.token);
+              setToken(response.data.token);
               // Decode the jwt to get the userObject, then store the decoded user object in the userObject state in App.js
               const decodedUserObject = jwt_decode(response.data.token);
               setUserObject(decodedUserObject);
