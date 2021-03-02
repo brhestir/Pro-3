@@ -57,17 +57,17 @@ const PositionListItem = (props) => {
           <div className="column is-4">
             <div class="buttons has-addons is-centered">
               <a
-                class="waves-effect waves-light btn"
+                class="waves-effect waves-light green accent-3 btn"
                 onClick={btnSellClickHandler}
               >
-                <i class="material-icons right">cloud</i>SELL
+                <i class="material-icons right">attach_money</i>SELL
               </a>
-              <button
-                className="button is-outlined is-danger"
+              <a
+                class="waves-effect waves-light red darken-4 btn"
                 onClick={btnDeleteClickHandler}
               >
-                DELETE
-              </button>
+                <i class="material-icons right">delete_forever</i>DELETE
+              </a>
             </div>
           </div>
         </div>
