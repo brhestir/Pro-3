@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import GlobalContext from "../../context/GlobalContext";
+import M from "materialize-css";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -39,11 +40,18 @@ const Login = () => {
               // Decode the jwt to get the userObject, then store the decoded user object in the userObject state in App.js
               const decodedUserObject = jwt_decode(response.data.token);
               setUserObject(decodedUserObject);
+
+              // Materialize Toast w/ callback to redirect to all-positions page
+              M.toast({
+                html: "You are logged in! Redirecting...",
+                completeCallback: history.push("/positions/all"),
+                displayLength: 2000,
+              });
               // This MUST be converted into a modal or non-modal TOAST with UI-Framework
-              alert(`You are now logged in!`);
+              //alert(`You are now logged in!`);
 
               // If login valid, go to logged-in-STATE
-              history.push("/positions/all");
+              //history.push("/positions/all");
             }
           }
         );

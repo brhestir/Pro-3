@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import GlobalContext from "../../context/GlobalContext";
+import M from "materialize-css";
 
 const PositionListItem = (props) => {
   const [currentPrice, setCurrentPrice] = useState("");
@@ -38,6 +39,10 @@ const PositionListItem = (props) => {
       .then((response) => {
         console.log(response);
         props.getUserPositions();
+        M.toast({
+          html: "Position deleted",
+          displayLength: 2000,
+        });
       })
       .catch((err) => {
         console.log(err);

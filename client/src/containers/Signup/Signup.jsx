@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import GlobalContext from "../../context/GlobalContext";
+import M from "materialize-css";
 
 const Signup = () => {
   const [userName, setUserName] = useState("");
@@ -40,12 +41,19 @@ const Signup = () => {
               const decodedUserObject = jwt_decode(response.data.token);
               setUserObject(decodedUserObject);
 
-              // This MUST be converted into a modal or non-modal TOAST with UI-Framework
-              alert(
-                `Signup success!  Your token is set as ${response.data.token}`
-              );
+              // Materialize TOAST w/ callback function
+              M.toast({
+                html: "You are signed up! Redirecting...",
+                completeCallback: history.push("/positions/all"),
+                displayLength: 2000,
+              });
 
-              history.push("/positions/all");
+              // This MUST be converted into a modal or non-modal TOAST with UI-Framework
+              // alert(
+              //   `Signup success!  Your token is set as ${response.data.token}`
+              // );
+
+              // history.push("/positions/all");
             }
           }
         );
