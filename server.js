@@ -1,5 +1,7 @@
 // ./server.js
 require('dotenv').config();													// to include env vars
+const path = require('path');
+const axios = require('axios');
 const express = require ("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -9,6 +11,20 @@ const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 
 const db = require("./models/index");
+
+// Prevent Heroku from idling (Thanks to Peter Colella)
+// If we happen to be in production, generate a hearbeat signal to maintain deployed client-side request attendance
+if (process.env.NODE_ENV === "production") {
+	console.log(`❤️  -> Heartbeat signal established; Interval -> 4 min`);
+	setInterval(() => {
+		axios.get("https://serene-bastion-85058.herokuapp.com")
+		.then((response) => {
+			console.log(`❤️  -> Beat recieved`);
+		}).catch((err) => {
+			console.log(`Error in Hearbeat signal generation: ${err}`);
+		});
+	}, 240000);	// 240000 ms interval, i.e. 2^2 min
+}
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -103,3 +119,4 @@ function insertSeedData() {
 			console.log(err);
 		});
 }
+
