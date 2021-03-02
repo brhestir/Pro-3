@@ -34,7 +34,7 @@ const PositionListItem = (props) => {
     console.log(props);
     axios
       .get(
-        `http://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+        `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
         console.log(res.data);
@@ -45,28 +45,21 @@ const PositionListItem = (props) => {
   return (
     <>
       <div className="container">
-        <div className="row">
+        <div className="row amber accent-3">
           <div className="col s2">Ticker: {props.tickerSymbol}</div>
           <div className="col s2">Buy Price: ${props.buyPrice}</div>
           <div className="col s2">Current Price: ${currentPrice}</div>
           <div className="col s2">Total Return: {totalReturn.toFixed(2)}%</div>
 
-
           {/* <div className="column is-2">_id: {props._id}</div> */}
           <div className="column is-4">
             <div class="buttons has-addons is-centered">
-              <button
-                className="button is-outlined is-info"
-                onClick={btnInfoClickHandler}
-              >
-                Info
-              </button>
-              <button
-                className="button is-outlined is-success"
+              <a
+                class="waves-effect waves-light btn"
                 onClick={btnSellClickHandler}
               >
-                Sell
-              </button>
+                <i class="material-icons right">cloud</i>SELL
+              </a>
               <button
                 className="button is-outlined is-danger"
                 onClick={btnDeleteClickHandler}
