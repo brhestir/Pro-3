@@ -15,6 +15,8 @@ const PositionListItem = (props) => {
   const btnSellClickHandler = (e) => {
     console.log(`btnSellClickHandler: ${props._id}`);
     console.log(props._id);
+
+    console.log(`Current userObject userName is: ${userObject.user}`);
   };
 
   const btnDeleteClickHandler = (e) => {
