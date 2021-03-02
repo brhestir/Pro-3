@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const Login = ({ setUserObject }) => {
+const Login = ({ setUserObject, setJwt }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,10 +28,11 @@ const Login = ({ setUserObject }) => {
             if (err) {
               console.log(err); // If login is invalid, perform "foo"
             } else {
+              // Call the setJwt callback to set the jwt state variable in App.js
+              console.log(`[i] Setting jwt...`);
+              setJwt(response.data.token);
+              // Decode the jwt to get the userObject, then store the decoded user object in the userObject state in App.js
               const decodedUserObject = jwt_decode(response.data.token);
-              console.log(decodedUserObject);
-
-              // Set the user-logged-in-token & do something with it
               setUserObject(decodedUserObject);
               // This MUST be converted into a modal or non-modal TOAST with UI-Framework
               alert(`You are now logged in!`);

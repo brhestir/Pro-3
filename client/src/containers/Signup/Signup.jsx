@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const Signup = ({ setUserObject }) => {
+const Signup = ({ setUserObject, setJwt }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,11 +28,13 @@ const Signup = ({ setUserObject }) => {
             if (err) {
               console.log(err);
             } else {
+              // Call the setJwt callback to set the jwt state variable in App.js
+              console.log(`[i] Setting jwt...`);
+              setJwt(response.data.token);
+              // Decode the jwt to get the userObject, then store the decoded user object in the userObject state in App.js
               const decodedUserObject = jwt_decode(response.data.token);
-              console.log(decodedUserObject);
-
-              // This does nothing at present, need to set calback function on component callout in app.js
               setUserObject(decodedUserObject);
+
               // This MUST be converted into a modal or non-modal TOAST with UI-Framework
               alert(
                 `Signup success!  Your token is set as ${response.data.token}`

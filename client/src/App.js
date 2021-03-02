@@ -13,11 +13,17 @@ import Loading from "./containers/Loading/Loading";
 function App() {
 
 	const [userObject, setUserObject] = useState({});
+	const [jwt, setJwt] = useState({});
 
 	useEffect( () => {
 		//console.log("userObject updated w/ useEffect hook in App.js");
 		//console.log(userObject);
 	}, [userObject]);
+
+	useEffect( () => {
+		sessionStorage.setItem(`STARK_ETF_JWT`, jwt);
+		console.log(`[i] Logged in; login persistence active; sessionStorage.STARK_ETF_JWT = ${jwt}`);
+	}, [jwt]);
 
 	return (
     <div className="App">
@@ -34,11 +40,11 @@ function App() {
 							<Route exact path="/positions/info" component={PositionInfo} />
 							<Route
 								exact path="/signup"
-								component={ (props) => <Signup {...props} setUserObject={setUserObject} /> }
+								component={ (props) => <Signup {...props} setUserObject={setUserObject} setJwt={setJwt}/> }
 							/>
 							<Route
 								exact path="/login"
-								component={ (props) => <Login {...props} setUserObject={setUserObject} /> }
+								component={ (props) => <Login {...props} setUserObject={setUserObject} setJwt={setJwt} /> }
 							/>
 							<Route exact path="/loading" component={Loading}/>
 						</Switch>
