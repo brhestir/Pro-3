@@ -43,12 +43,12 @@ const PositionListItem = (props) => {
 
   return (
     <>
-      <div className="list-item">
-        <div className="level-item">
-          <div className="column is-2">Ticker: {props.tickerSymbol}</div>
-          <div className="column is-2">Buy Price: ${props.buyPrice}</div>
-          <div className="column is-2">Current Price: ${currentPrice}</div>
-          <div className="column is-2">Total Return: {totalReturn.toFixed(2)}%</div>
+      <div className="container">
+        <div className="row">
+          <div className="col s2">Ticker: {props.tickerSymbol}</div>
+          <div className="col s2">Buy Price: ${props.buyPrice}</div>
+          <div className="col s2">Current Price: ${currentPrice}</div>
+          <div className="col s2">Total Return: {totalReturn.toFixed(2)}%</div>
 
 
           {/* <div className="column is-2">_id: {props._id}</div> */}

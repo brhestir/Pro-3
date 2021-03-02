@@ -8,34 +8,10 @@ const AllPositions = (props) => {
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    // WE HAVE USER _id already, need to get the updated userOBJECT
-    //console.log("props.userObject._id:");
-    //console.log(props.userObject._id);
     axios
       .get(`/api/users/${props.userObject._id}`)
       .then((response) => {
         setPositions(response.data.positions);
-
-        //let positionIdArray = response.data.positions;
-        //console.log(positionIdArray);
-
-        // let positionDataArray = [];
-        // response.data.positions.map(function (currentPositionID) {
-        // axios
-        //   .get(`/api/positions/${currentPositionID}`)
-        //   .then((response) => {
-        //     //console.log(response.data);
-        //     setPositions(response.data); // update state with returned data
-        // 		// positionDataArray.push(response.data);
-        //   })
-        //   .catch((err) => {
-        //     if (err) {
-        //       throw err;
-        //     }
-        //   });
-        // }); // end of MAP
-        //console.log("positionDataArray: ");
-        //console.log(positionDataArray);
       })
       .catch((err) => {
         console.log(`[e] axios.get(/api/positions) error: ${err}`);

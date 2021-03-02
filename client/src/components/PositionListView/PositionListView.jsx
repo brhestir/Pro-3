@@ -5,7 +5,7 @@ import PositionListViewItem from "../PositionListViewItem/PositionListViewItem";
 import PositionsContext from "../../context/PositionsContext";
 const PositionListView = () => {
   const inputArray = useContext(PositionsContext);
-  //console.log(inputArray); // DO NOT REMOVE THIS CONSOLE LOG IT IS MAKING IT RENDER CORRECTLY, NO IDEA WHY.  Perhaps race condition?
+  
   return (
     <>
       <div className="columns is-mobile is-vcentered">
