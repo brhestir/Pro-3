@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import batemanPixelPng from "../../assets/images/leoDC_pixel.png";
+import "./UserProfileCard.css"
 
 const UserProfileCard = (props) => {
   // const [userImageURL, setUserImageURL] = useState({ batemanPixelPng });
@@ -7,29 +8,17 @@ const UserProfileCard = (props) => {
 
   return (
     <>
-      <div className="container">
-        <div className="columns">
-          <div className="column is-half is-offset-3">
-            <div className="block">
-              <div className="card">
-                <div className="card-content">
-                  <div className="media">
-                    <div className="media-left">
-                      <figure className="image is-128x128">
-                        <img
-                          src={batemanPixelPng}
-                          alt="Wealthy human instance"
-                        />
-                      </figure>
-                    </div>
-                    <div className="media-content">
-                      <p className="title is-3">{props.userObject.userName}</p>
-                      <p className="subtitle is-6">
-                        <strong>% change: </strong>
-                        <span className="tag">{userPercentChange}</span>
-                      </p>
-                    </div>
-                  </div>
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <div className="row">
+                <div className="col s4 m6">
+                  <img className="userPic" src={batemanPixelPng} alt="Wealthy human instance"/>
+                </div>
+                <div className="col s8 m6">
+                  <p>{props.userObject.userName}</p>
+                  <p>Lifetime Return: {userPercentChange}%</p>
                 </div>
               </div>
             </div>
