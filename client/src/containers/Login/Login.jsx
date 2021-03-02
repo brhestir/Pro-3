@@ -34,7 +34,7 @@ const Login = () => {
               console.log(err); // If login is invalid, perform "foo"
             } else {
               // Call the setJwt callback to set the jwt state variable in App.js
-              console.log(`[i] Setting jwt...`);
+              console.log(`[i] Setting token...`);
               setToken(response.data.token);
               // Decode the jwt to get the userObject, then store the decoded user object in the userObject state in App.js
               const decodedUserObject = jwt_decode(response.data.token);
