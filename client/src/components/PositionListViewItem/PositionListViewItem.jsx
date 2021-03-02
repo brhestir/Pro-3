@@ -24,7 +24,14 @@ const PositionListItem = (props) => {
     console.log(`[Sell request] Sell price: ${currentPrice} `);
     console.log(`[Sell request] item % change: ${totalReturn}`);
 
-    //axios.put(`/api/users/${userObject._id}`, {});
+    axios
+      .put(`/api/users/${userObject._id}`, { totalChange: 100 })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const btnDeleteClickHandler = (e) => {
@@ -34,6 +41,7 @@ const PositionListItem = (props) => {
       .delete(`/api/positions/${props._id}`)
       .then((response) => {
         console.log(response);
+        props.getUserPositions();
       })
       .catch((err) => {
         console.log(err);

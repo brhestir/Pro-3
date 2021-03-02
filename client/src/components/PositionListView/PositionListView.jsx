@@ -3,9 +3,9 @@
 import React, { useContext } from "react";
 import PositionListViewItem from "../PositionListViewItem/PositionListViewItem";
 import PositionsContext from "../../context/PositionsContext";
-const PositionListView = () => {
+const PositionListView = ({ getUserPositions }) => {
   const inputArray = useContext(PositionsContext);
-  
+
   return (
     <>
       <div className="columns is-mobile is-vcentered">
@@ -23,6 +23,7 @@ const PositionListView = () => {
                       tickerSymbol={curEl.tickerSymbol}
                       buyPrice={curEl.buyPrice}
                       selPrice={curEl.selPrice}
+                      getUserPositions={getUserPositions}
                     />
                   </div>
                 );
