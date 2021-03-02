@@ -16,8 +16,6 @@ const NavbarVanilla = () => {
           </Link>
         </div>
 
-        {/* TODO: Do we need a burger button? */}
-
         <ul className="left hide-on-med-and-down">
           <li>
             <Link className="navbar-item" to="/positions/add">

@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 //import API from "../../utils/API";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 import GlobalContext from "../../context/GlobalContext";
+import M from "materialize-css";
 
 // TODO: Change variable names so they're not so confusing.
 
@@ -35,7 +36,7 @@ const AddPosition = (props) => {
     axios
       .post("/api/positions", {
         stockFullName: searchQuery,
-        tickerSymbol: searchTicker,
+        tickerSymbol: searchTicker.toUpperCase(),
         buyPrice: stockPrice,
       })
       .then((response) => {
@@ -49,7 +50,7 @@ const AddPosition = (props) => {
             $push: { positions: response.data._id },
           })
           .then((response) => {
-            //console.log(response);
+            M.toast({ html: `Added Position: ${searchTicker.toUpperCase()}` });
           })
           .catch((err) => {
             console.log(`User ${userObject._id} update error: ${err}`);
