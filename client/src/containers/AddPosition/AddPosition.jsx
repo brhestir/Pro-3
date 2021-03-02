@@ -54,23 +54,24 @@ const AddPosition = (props) => {
 
   return (
     <div>
-      <div className="container notification is-primary">
-        <div className="columns">
-          <div className="column">
-            <h1 className="title has-text-centered notification is-primary">
-              Add Position
-            </h1>
+      <div className="container">
+        <div className="row">
+          <div className="col s12 center-align  purple accent-2">
+            <h1>Add Position</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col s12">
+            <UserProfileCard userObject={props.userObject} />
           </div>
         </div>
       </div>
-      <div className="block">
-        <UserProfileCard userObject={props.userObject} />
-      </div>
+
       <div className="container">
-        <div className="columns">
-          <div className="column notification is-primary">
+        <div className="row">
+          <div className="col s12 center-align  purple accent-2">
             <h1>Add Position</h1>
-            <div className="control">
+            <div className="input-field col s6 center-align deep-orange darken-1">
               <input
                 className="input"
                 type="text"
@@ -81,25 +82,28 @@ const AddPosition = (props) => {
                   setStockName(e.target.value);
                 }}
               />
+              <a
+                class="waves-effect waves-light btn-large"
+                type="submit"
+                onClick={handleSubmit}
+              >
+                <i class="material-icons right">show_chart</i>Get Current Price
+              </a>
             </div>
-            <button
-              className="button is-rounded is-info"
-              type="submit"
-              onClick={handleSubmit}
-            >
-              Search
-            </button>
-            <div>Search information will show up under here:</div>
-            <div>Stock: {searchQuery}</div>
-            <div>Ticker: {searchTicker}</div>
-            <div>Price: {stockPrice}</div>
-            {/* TODO: Make this button add position to database */}
-            <button
-              className="button is-link"
-              onClick={handleBtnAddtoPortfolio}
-            >
-              Add to Portfolio
-            </button>
+
+            <div className="col s6 left-align green accent-3">
+              <div>Search information will show up under here:</div>
+              <div>Stock: {searchQuery}</div>
+              <div>Ticker: {searchTicker}</div>
+              <div>Price: {stockPrice}</div>
+              <a
+                class="waves-effect waves-light btn-large"
+                type="submit"
+                onClick={handleBtnAddtoPortfolio}
+              >
+                <i class="material-icons right">attach_money</i>Add to Portfolio
+              </a>
+            </div>
           </div>
         </div>
       </div>

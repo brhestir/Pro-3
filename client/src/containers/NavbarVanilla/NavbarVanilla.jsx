@@ -5,8 +5,12 @@ import businessManPng from "../../assets/images/business-man.png";
 const NavbarVanilla = () => {
   return (
     <>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
+      <nav
+        className="nav-wrapper"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div className="brand-logo center">
           <Link className="navbar-item" to="/">
             <img src={businessManPng} width="30" alt="WSB chap" />
           </Link>
@@ -27,41 +31,40 @@ const NavbarVanilla = () => {
           {/* End Burger button */}
         </div>
 
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
+        {/* <div id="navbarBasicExample" className="navbar-menu"> */}
+        {/* <div className="navbar-start"> */}
+        <ul class="left hide-on-med-and-down">
+          <li>
             <Link className="navbar-item" to="/">
               Home
             </Link>
+          </li>
+          <li>
             <Link className="navbar-item" to="/positions/add">
-              Position: Add
+              Add a Position
             </Link>
-            <Link className="navbar-item" to="/positions/edit">
-              Edit Positions
-            </Link>
+          </li>
+          <li>
             <Link className="navbar-item" to="/positions/all">
-              Positions: All
+              View Your Positions
             </Link>
-            <Link className="navbar-item" to="/positions/info">
-              Position Info
-            </Link>
-            <Link className="navbar-item" to="/loading">
-              Loading Page
-            </Link>
-          </div>
-        </div>
+          </li>
+        </ul>
+        {/* </div> */}
+        {/* </div> */}
 
-        <div className="navbar-end">
-          <div className="navbar-item">
-            <div className="buttons">
-              <Link className="button is-primary" to="/signup">
-                <strong>Sign up</strong>
-              </Link>
-              <Link className="button is-light" to="/login">
-                Log in
-              </Link>
-            </div>
-          </div>
-        </div>
+        <ul class="right hide-on-med-and-down">
+          <li>
+            <Link className="waves-effect waves-light btn" to="/signup">
+              Sign up<i class="material-icons right">person_add</i>
+            </Link>
+          </li>
+          <li>
+            <Link className="waves-effect waves-light btn" to="/login">
+              Log in <i class="material-icons right">assignment_ind</i>
+            </Link>
+          </li>
+        </ul>
       </nav>
     </>
   );
