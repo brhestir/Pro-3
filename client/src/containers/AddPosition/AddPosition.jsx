@@ -20,7 +20,7 @@ const AddPosition = (props) => {
     e.preventDefault();
     axios
       .get(
-        `http://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+        `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
         console.log(res.data);
