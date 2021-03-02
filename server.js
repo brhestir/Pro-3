@@ -13,8 +13,8 @@ const PORT = process.env.PORT || 3001;
 const db = require("./models/index");
 
 // Prevent Heroku from idling (Thanks to Peter Colella)
-// If MONGODB_URI env var is defined (i.e. we are deployed, possibly in production even)
-if(process.env.MONGODB_URI) {
+// If we happen to be in production, generate a hearbeat signal to maintain deployed client-side request attendance
+if (process.env.NODE_ENV === "production") {
 	console.log(`❤️  -> Heartbeat signal established; Interval -> 4 min`);
 	setInterval(() => {
 		axios.get("https://serene-bastion-85058.herokuapp.com")
