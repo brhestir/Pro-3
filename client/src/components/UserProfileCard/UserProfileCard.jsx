@@ -4,7 +4,7 @@ import "./UserProfileCard.css";
 
 const UserProfileCard = (props) => {
   // const [userImageURL, setUserImageURL] = useState({ batemanPixelPng });
-  const [userPercentChange] = useState(80);
+  //const [userPercentChange] = useState(80);
 
   return (
     <>
@@ -22,7 +22,7 @@ const UserProfileCard = (props) => {
                 </div>
                 <div className="col s8 m6">
                   <p>{props.userObject.userName}</p>
-                  <p>Lifetime Return: {userPercentChange}%</p>
+                  <p>Lifetime Return: {props.userObject.totalChange}%</p>
                 </div>
               </div>
             </div>
