@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 const PositionListItem = (props) => {
 
   const [currentPrice, setCurrentPrice] = useState("");
+  const totalReturn = ((currentPrice - props.buyPrice) / props.buyPrice) * 100;
 
   const btnInfoClickHandler = (e) => {
     console.log(`btnInfoClickHandler: ${props._id}`);
@@ -35,9 +36,8 @@ const PositionListItem = (props) => {
       )
       .then((res) => {
         console.log(res.data);
-        setCurrentPrice(res.data.data.intraday[0].last)
+        setCurrentPrice(res.data.data.intraday[0].last);
       });
-
   },[])
 
 
@@ -48,7 +48,7 @@ const PositionListItem = (props) => {
           <div className="column is-2">Ticker: {props.tickerSymbol}</div>
           <div className="column is-2">Buy Price: ${props.buyPrice}</div>
           <div className="column is-2">Current Price: ${currentPrice}</div>
-          <div className="column is-2">Total Return: </div>
+          <div className="column is-2">Total Return: {totalReturn.toFixed(2)}%</div>
 
 
           {/* <div className="column is-2">_id: {props._id}</div> */}
