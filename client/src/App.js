@@ -15,18 +15,30 @@ import jwt_decode from "jwt-decode";
 
 function App() {
 
-	const [userObject, setUserObject] = useState({});
-	const [token, setToken] = useState({});
+	// Thanks to Jude
+	const [token, setToken] = useState(sessionStorage.getItem(`STARK_ETF_TOKEN`)||"");
+	const [userObject, setUserObject] = useState(sessionStorage.getItem(`STARK_ETF_OBJECT`)||{});
 
 	useEffect( () => {
-		const token = sessionStorage.getItem(`STARK_ETF_TOKEN`);
-		setUserObject(jwt_decode(token));
+		const sessionToken = sessionStorage.getItem(`STARK_ETF_TOKEN`);
+		if(sessionToken){
+			setToken(sessionToken);
+			jwt.verify(sessionToken, process.env.REACT_APP_SECRET, (err, decoded) => {
+				if(err) {
+					console.log(err);	// Invalid session token
+				} else {
+					console.log(`[i] Setting userObject to decoded stored sessionToken...`);
+					console.log(`[i] Decoded object is:`);
+					console.log(decoded);
+					setUserObject(decoded);
+				}
+			})
+		}
 	}, []);
 
+	// When "token" is updated, also update it in sessionStorage
 	useEffect( () => {
 		sessionStorage.setItem(`STARK_ETF_TOKEN`, token);
-		console.log(`[i] Logged in; login persistence active; sessionStorage.STARK_ETF_TOKEN = `);
-		console.log(token);
 	}, [token]);
 
 	return (
