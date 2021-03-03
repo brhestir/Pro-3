@@ -6,6 +6,7 @@ import M from "materialize-css";
 const PositionListItem = (props) => {
   const [currentPrice, setCurrentPrice] = useState("");
   const [boxColor, setBoxColor] = useState("");
+  const [buttonPulse, setButtonPulse] = useState("");
 
   const totalReturn = ((currentPrice - props.buyPrice) / props.buyPrice) * 100;
 
@@ -71,6 +72,7 @@ const PositionListItem = (props) => {
   };
 
   useEffect(() => {
+    setBoxColor("");
     axios
       .get(
         `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
@@ -81,44 +83,51 @@ const PositionListItem = (props) => {
         } else {
           setCurrentPrice(res.data.data.intraday[0].high);
         }
-        if (totalReturn > 0) {
-          setBoxColor("green accent-4")
-        } else {
-          setBoxColor("red lighten-1")
-        }
       });
   }, []);
+
+  useEffect(() => {
+    if (totalReturn > 0) {
+      setBoxColor("green accent-3")
+      setButtonPulse("waves-effect waves-light pulse green darken-4 btn")
+    } else {
+      setBoxColor("red accent-2")
+      setButtonPulse("waves-effect waves-light green darken-4 btn")
+    }
+  }, [totalReturn]);
 
   return (
     <>
       <div className="container">
         <div className={boxColor}>
-        <div className="row">
-          <div className="col s3">Ticker: {props.tickerSymbol}</div>
-          <div className="col s3">Buy Price: ${props.buyPrice}</div>
-          <div className="col s3">Current Price: ${currentPrice}</div>
-          <div className="col s3">Total Return: {totalReturn.toFixed(2)}%</div>
-
           <div className="row">
-            <div className="col s6">
-              <button
-                className="waves-effect waves-light green pulse accent-3 btn"
-                onClick={btnSellClickHandler}
-              >
-                <i className="material-icons right">attach_money</i>SELL
-              </button>
+            <div className="col s3">Ticker: {props.tickerSymbol}</div>
+            <div className="col s3">Buy Price: ${props.buyPrice}</div>
+            <div className="col s3">Current Price: ${currentPrice}</div>
+            <div className="col s3">
+              Total Return: {totalReturn.toFixed(2)}%
             </div>
-            <div className="col s6">
-              <button
-                className="waves-effect waves-light red darken-4 btn"
-                onClick={btnDeleteClickHandler}
-              >
-                <i className="material-icons right">delete_forever</i>DELETE
-              </button>
+
+            <div className="row">
+              <div className="col s6">
+                <button
+                  className={buttonPulse}
+                  onClick={btnSellClickHandler}
+                >
+                  <i className="material-icons right">attach_money</i>SELL
+                </button>
+              </div>
+              <div className="col s6">
+                <button
+                  className="waves-effect waves-light red darken-4 btn"
+                  onClick={btnDeleteClickHandler}
+                >
+                  <i className="material-icons right">delete_forever</i>DELETE
+                </button>
+              </div>
             </div>
+            <div></div>
           </div>
-          <div></div>
-        </div>
         </div>
       </div>
     </>
