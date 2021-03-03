@@ -13,12 +13,15 @@ const AddPosition = (props) => {
   const [searchTicker, setSearchTicker] = useState("");
   const [stockPrice, setStockPrice] = useState("");
 
+  const [boxVisible, setBoxVisible] = useState("scale-transition scale-out");
+
   const { userObject /*, setUserObject, token, setToken*/ } = useContext(
     GlobalContext
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setBoxVisible("scale-transition scale-in");
     axios
       .get(
         `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=10&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
@@ -29,7 +32,6 @@ const AddPosition = (props) => {
           setStockPrice(res.data.data.intraday[0].last);
         } else {
           setStockPrice(res.data.data.intraday[0].high);
-
         }
         setSearchQuery(res.data.data.name);
         setSearchTicker(stockName);
@@ -101,22 +103,24 @@ const AddPosition = (props) => {
                 </div>
               </div>
             </div>
-            <div className="row">
-              <div className="col s6 push-s3 left-align z-depth-3 green accent-3">
-                <div>Search information will show up under here:</div>
-                <div>Stock: {searchQuery}</div>
-                <div>Ticker: {searchTicker}</div>
-                <div>Price: {stockPrice}</div>
-                <br></br>
-                <div className="row center-align">
-                  <button
-                    className="waves-effect waves-light pulse btn-large"
-                    type="submit"
-                    onClick={handleBtnAddtoPortfolio}
-                  >
-                    <i className="material-icons right">attach_money</i>Add to
-                    Portfolio
-                  </button>
+            <div className={boxVisible}>
+              <div className="row">
+                <div className="col s6 push-s3 left-align z-depth-3 green accent-3">
+                  <div>Search information will show up under here:</div>
+                  <div>Stock: {searchQuery}</div>
+                  <div>Ticker: {searchTicker}</div>
+                  <div>Price: {stockPrice}</div>
+                  <br></br>
+                  <div className="row center-align">
+                    <button
+                      className="waves-effect waves-light pulse btn-large"
+                      type="submit"
+                      onClick={handleBtnAddtoPortfolio}
+                    >
+                      <i className="material-icons right">attach_money</i>Add to
+                      Portfolio
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
