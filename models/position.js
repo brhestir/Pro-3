@@ -2,23 +2,31 @@
 const mongoose = require(`mongoose`);
 const Schema = mongoose.Schema;
 
-const positionSchema = new Schema({
-	stockFullName: {
-		type: String,
-		trim: true,
+const positionSchema = new Schema(
+	{
+		stockFullName: {
+			type: String,
+			trim: true,
+		},
+		tickerSymbol: {
+			type: String,
+			required: true,
+			trim: true,
+		},
+		buyPrice: {
+			type: Number,
+		},
+		sellPrice: {
+			type: Number,
+		},
 	},
-	tickerSymbol: {
-		type: String,
-		required: true,
-		trim: true,
-	},
-	buyPrice: {
-		type: Number,
-	},
-	sellPrice: {
-		type: Number,
-	},
-});
+	{
+		timestamps: {
+			createdAt: 'created_at',
+			updatedAt: 'updated_at'
+		}
+	}
+);
 
 // Thank you Peter
 positionSchema.post('remove', document => {
