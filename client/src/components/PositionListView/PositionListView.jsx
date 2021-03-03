@@ -6,16 +6,9 @@ import PositionsContext from "../../context/PositionsContext";
 const PositionListView = ({ getUserPositions }) => {
   const inputArray = useContext(PositionsContext);
 
-  // const testBuyPrice = 200.0;
-  console.log("InputArray: ");
-  console.log(inputArray);
-
   const sortedInputArray = []
     .concat(inputArray)
     .sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
-
-  console.log("sortedInputArray:");
-  console.log(sortedInputArray);
 
   return (
     <>
