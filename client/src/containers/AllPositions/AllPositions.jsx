@@ -46,7 +46,7 @@ const AllPositions = (props) => {
       </div>
       <div className="container">
         <div className="row">
-          <div className="col s12 center-align light-blue accent-3">
+          <div className="col s8 push-s2 center-align z-depth-3 light-blue accent-3">
             <h1>All Positions</h1>
             <div className="row">
               <PositionsContext.Provider value={positions}>

@@ -82,20 +82,21 @@ const PositionListItem = (props) => {
     <>
       <div className="container">
         <div className="row amber accent-3">
-          <div className="col s2">Ticker: {props.tickerSymbol}</div>
-          <div className="col s2">Buy Price: ${props.buyPrice}</div>
-          <div className="col s2">Current Price: ${currentPrice}</div>
-          <div className="col s2">Total Return: {totalReturn.toFixed(2)}%</div>
+          <div className="col s3">Ticker: {props.tickerSymbol}</div>
+          <div className="col s3">Buy Price: ${props.buyPrice}</div>
+          <div className="col s3">Current Price: ${currentPrice}</div>
+          <div className="col s3">Total Return: {totalReturn.toFixed(2)}%</div>
 
-          {/* <div className="column is-2">_id: {props._id}</div> */}
-          <div className="column is-4">
-            <div className="buttons has-addons is-centered">
+          <div className="row">
+            <div className="col s6">
               <button
                 className="waves-effect waves-light green pulse accent-3 btn"
                 onClick={btnSellClickHandler}
               >
                 <i className="material-icons right">attach_money</i>SELL
               </button>
+            </div>
+            <div className="col s6">
               <button
                 className="waves-effect waves-light red darken-4 btn"
                 onClick={btnDeleteClickHandler}
@@ -104,6 +105,7 @@ const PositionListItem = (props) => {
               </button>
             </div>
           </div>
+          <div></div>
         </div>
       </div>
     </>
