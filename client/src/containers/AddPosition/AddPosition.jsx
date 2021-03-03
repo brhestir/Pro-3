@@ -3,6 +3,7 @@ import React, { useState, useContext } from "react";
 //import API from "../../utils/API";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 import GlobalContext from "../../context/GlobalContext";
+import M from "materialize-css";
 
 // TODO: Change variable names so they're not so confusing.
 
@@ -12,7 +13,7 @@ const AddPosition = (props) => {
   const [searchTicker, setSearchTicker] = useState("");
   const [stockPrice, setStockPrice] = useState("");
 
-  const { userObject, setUserObject, token, setToken } = useContext(
+  const { userObject /*, setUserObject, token, setToken*/ } = useContext(
     GlobalContext
   );
 
@@ -35,7 +36,7 @@ const AddPosition = (props) => {
     axios
       .post("/api/positions", {
         stockFullName: searchQuery,
-        tickerSymbol: searchTicker,
+        tickerSymbol: searchTicker.toUpperCase(),
         buyPrice: stockPrice,
       })
       .then((response) => {
@@ -49,7 +50,7 @@ const AddPosition = (props) => {
             $push: { positions: response.data._id },
           })
           .then((response) => {
-            //console.log(response);
+            M.toast({ html: `Added Position: ${searchTicker.toUpperCase()}` });
           })
           .catch((err) => {
             console.log(`User ${userObject._id} update error: ${err}`);
@@ -87,13 +88,14 @@ const AddPosition = (props) => {
                   setStockName(e.target.value);
                 }}
               />
-              <a
-                class="waves-effect waves-light btn-large"
+              <button
+                className="waves-effect waves-light btn-large"
                 type="submit"
                 onClick={handleSubmit}
               >
-                <i class="material-icons right">show_chart</i>Get Current Price
-              </a>
+                <i className="material-icons right">show_chart</i>Get Current
+                Price
+              </button>
             </div>
 
             <div className="col s6 left-align green accent-3">
@@ -101,13 +103,14 @@ const AddPosition = (props) => {
               <div>Stock: {searchQuery}</div>
               <div>Ticker: {searchTicker}</div>
               <div>Price: {stockPrice}</div>
-              <a
-                class="waves-effect waves-light btn-large"
+              <button
+                className="waves-effect waves-light btn-large"
                 type="submit"
                 onClick={handleBtnAddtoPortfolio}
               >
-                <i class="material-icons right">attach_money</i>Add to Portfolio
-              </a>
+                <i className="material-icons right">attach_money</i>Add to
+                Portfolio
+              </button>
             </div>
           </div>
         </div>

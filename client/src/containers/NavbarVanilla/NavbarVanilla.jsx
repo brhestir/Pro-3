@@ -16,9 +16,7 @@ const NavbarVanilla = () => {
           </Link>
         </div>
 
-        {/* TODO: Do we need a burger button? */}
-
-        <ul class="left hide-on-med-and-down">
+        <ul className="left hide-on-med-and-down">
           <li>
             <Link className="navbar-item" to="/positions/add">
               Add a Position
@@ -31,15 +29,15 @@ const NavbarVanilla = () => {
           </li>
         </ul>
 
-        <ul class="right hide-on-med-and-down">
+        <ul className="right hide-on-med-and-down">
           <li>
             <Link className="waves-effect waves-light btn" to="/signup">
-              Sign up<i class="material-icons right">person_add</i>
+              Sign up<i className="material-icons right">person_add</i>
             </Link>
           </li>
           <li>
             <Link className="waves-effect waves-light btn" to="/login">
-              Log in <i class="material-icons right">assignment_ind</i>
+              Log in <i className="material-icons right">assignment_ind</i>
             </Link>
           </li>
         </ul>

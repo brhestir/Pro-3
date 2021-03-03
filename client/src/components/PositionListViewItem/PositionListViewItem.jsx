@@ -1,22 +1,53 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import GlobalContext from "../../context/GlobalContext";
+import M from "materialize-css";
 
 const PositionListItem = (props) => {
   const [currentPrice, setCurrentPrice] = useState("");
   const totalReturn = ((currentPrice - props.buyPrice) / props.buyPrice) * 100;
 
-  let { userObject, setUserObject } = useContext(GlobalContext);
-
-  const btnInfoClickHandler = (e) => {
-    console.log(`btnInfoClickHandler: ${props._id}`);
-  };
+  let { userObject /*, setUserObject*/ } = useContext(GlobalContext);
 
   const btnSellClickHandler = (e) => {
-    console.log(`btnSellClickHandler: ${props._id}`);
-    console.log(props._id);
+    console.log(
+      `[Sell request] Call into btnSellClickHandler from listItem for id: ${props._id}`
+    );
+    console.log(
+      `[Sell request] Current userObject userName is: ${userObject.userName}`
+    );
+    console.log(`[Sell request] Current user _id is: ${userObject._id}`);
+    console.log(`[Sell request] Bought price: ${props.buyPrice} `);
+    console.log(`[Sell request] Sell price: ${currentPrice} `);
+    console.log(`[Sell request] item % change: ${totalReturn}`);
 
-    console.log(`Current userObject userName is: ${userObject.user}`);
+    let updatedUserLifetimeReturn = (userObject.totalChange += totalReturn);
+
+    axios
+      .put(`/api/users/${userObject._id}`, {
+        totalChange: updatedUserLifetimeReturn,
+      })
+      .then((response) => {
+        //console.log(response.data);
+        M.toast({
+          html: `Sold ${props.tickerSymbol}: Returned ${totalReturn.toFixed(
+            2
+          )} % [TEST MODE]`,
+          displayLength: 2000,
+        });
+        axios
+          .delete(`/api/positions/${props._id}`)
+          .then((response) => {
+            console.log(response);
+            props.getUserPositions();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const btnDeleteClickHandler = (e) => {
@@ -26,6 +57,11 @@ const PositionListItem = (props) => {
       .delete(`/api/positions/${props._id}`)
       .then((response) => {
         console.log(response);
+        props.getUserPositions();
+        M.toast({
+          html: "Position Deleted",
+          displayLength: 2000,
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -33,13 +69,11 @@ const PositionListItem = (props) => {
   };
 
   useEffect(() => {
-    console.log(props);
     axios
       .get(
         `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
-        console.log(res.data);
         setCurrentPrice(res.data.data.intraday[0].last);
       });
   }, []);
@@ -55,19 +89,19 @@ const PositionListItem = (props) => {
 
           {/* <div className="column is-2">_id: {props._id}</div> */}
           <div className="column is-4">
-            <div class="buttons has-addons is-centered">
-              <a
-                class="waves-effect waves-light green accent-3 btn"
+            <div className="buttons has-addons is-centered">
+              <button
+                className="waves-effect waves-light green accent-3 btn"
                 onClick={btnSellClickHandler}
               >
-                <i class="material-icons right">attach_money</i>SELL
-              </a>
-              <a
-                class="waves-effect waves-light red darken-4 btn"
+                <i className="material-icons right">attach_money</i>SELL
+              </button>
+              <button
+                className="waves-effect waves-light red darken-4 btn"
                 onClick={btnDeleteClickHandler}
               >
-                <i class="material-icons right">delete_forever</i>DELETE
-              </a>
+                <i className="material-icons right">delete_forever</i>DELETE
+              </button>
             </div>
           </div>
         </div>

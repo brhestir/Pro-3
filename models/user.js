@@ -19,6 +19,7 @@ const userSchema = new Schema({
 	},
 	totalChange: {
 		type: Number,
+		default: 0.0
 	},
 	positions: [
 		{
