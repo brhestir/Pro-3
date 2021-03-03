@@ -88,11 +88,11 @@ const PositionListItem = (props) => {
 
   useEffect(() => {
     if (totalReturn > 0) {
-      setBoxColor("green accent-3")
-      setButtonPulse("waves-effect waves-light pulse green darken-4 btn")
+      setBoxColor("green accent-3");
+      setButtonPulse("waves-effect waves-light pulse green darken-4 btn");
     } else {
-      setBoxColor("red accent-2")
-      setButtonPulse("waves-effect waves-light green darken-4 btn")
+      setBoxColor("red accent-2");
+      setButtonPulse("waves-effect waves-light green darken-4 btn");
     }
   }, [totalReturn]);
 
@@ -101,23 +101,36 @@ const PositionListItem = (props) => {
       <div className="container z-depth-3">
         <div className={boxColor}>
           <div className="row">
-            <div className="col s3">Ticker: {props.tickerSymbol}</div>
-            <div className="col s3">Buy Price: ${props.buyPrice}</div>
-            <div className="col s3">Current Price: ${currentPrice}</div>
-            <div className="col s3">
-              Total Return: {totalReturn.toFixed(2)}%
-            </div>
+            <h4>{props.tickerSymbol}</h4>
+            <div className="col s4">
+              <div className="row">Buy Price:</div>
+              <div className="row">
+                <h5>${props.buyPrice}</h5>
+              </div>
 
-            <div className="row">
-              <div className="col s6">
-                <button
-                  className={buttonPulse}
-                  onClick={btnSellClickHandler}
-                >
+              <div className="row">
+                <button className={buttonPulse} onClick={btnSellClickHandler}>
                   <i className="material-icons right">attach_money</i>SELL
                 </button>
               </div>
-              <div className="col s6">
+            </div>
+
+            <div className="col s4 circle z-depth-5">
+              <div className="row">
+                <h6> Total Return:</h6>
+              </div>
+              <div className="row">
+                <h5>{totalReturn.toFixed(2)}%</h5>
+              </div>
+            </div>
+
+            <div className="col s4">
+              <div className="row">Current Price:</div>
+              <div className="row">
+                <h5>${currentPrice}</h5>
+              </div>
+
+              <div className="row">
                 <button
                   className="waves-effect waves-light red darken-4 btn"
                   onClick={btnDeleteClickHandler}
@@ -125,6 +138,11 @@ const PositionListItem = (props) => {
                   <i className="material-icons right">delete_forever</i>DELETE
                 </button>
               </div>
+            </div>
+
+            <div className="row">
+              <div className="col s6"></div>
+              <div className="col s6"></div>
             </div>
             <div></div>
           </div>
