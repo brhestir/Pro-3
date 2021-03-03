@@ -16,7 +16,7 @@ const PositionListView = ({ getUserPositions }) => {
                 return (
                   <div
                     className="notification is-info is-light"
-                    key={index.toString()}
+                    key={curEl._id}
                   >
                     <PositionListViewItem
                       _id={curEl._id}
