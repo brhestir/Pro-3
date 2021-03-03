@@ -63,16 +63,14 @@ const Login = () => {
 
   return (
     <>
-    <br></br>
+      <br></br>
       <div className="container">
         <div className="row">
           <div className="col s8 push-s2 center-align z-depth-3 teal darken-4">
-            <h3>Welcome Back! Please login to continue:</h3>
+            <h4>Welcome Back!</h4>
+            <h4>Please login to continue:</h4>
             <div className="row">
-              <form
-                onSubmit={handleFormSubmit}
-              >
-                <label className="label">Username:</label>
+              <form onSubmit={handleFormSubmit}>
                 <div className="control has-icons-left has-icons-right">
                   <input
                     className="input"
@@ -92,15 +90,10 @@ const Login = () => {
                     <i className="fas fa-check"></i>
                   </span>
                 </div>
-                <p className="help is-success">
-                  Many usernames are available. Consider providing feedback to
-                  the user at runtime.
-                </p>
 
                 <div className="columns">
                   <div className="column is-3"></div>
                   <div className="field column is-6">
-                    <label className="label">Email:</label>
                     <div className="control has-icons-left has-icons-right">
                       <input
                         className="input"
@@ -120,14 +113,12 @@ const Login = () => {
                         <i className="fas fa-check"></i>
                       </span>
                     </div>
-                    <p className="help is-success">Email address goes here.</p>
                   </div>
                 </div>
 
                 <div className="columns">
                   <div className="column is-3"></div>
                   <div className="field column is-6">
-                    <label className="label">Password:</label>
                     <div className="control has-icons-left has-icons-right">
                       <input
                         className="input"
@@ -147,7 +138,6 @@ const Login = () => {
                         <i className="fas fa-check"></i>
                       </span>
                     </div>
-                    <p className="help is-success">Enter your password.</p>
                   </div>
                 </div>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import batemanPixelPng from "../../assets/images/leoDC_pixel.png";
+import profilePic from "../../assets/images/diamondHandsMascot.png";
 import "./UserProfileCard.css";
 
 const UserProfileCard = (props) => {
@@ -16,7 +16,7 @@ const UserProfileCard = (props) => {
                 <div className="col s4 m6">
                   <img
                     className="userPic"
-                    src={batemanPixelPng}
+                    src={profilePic}
                     alt="Wealthy human instance"
                   />
                 </div>
