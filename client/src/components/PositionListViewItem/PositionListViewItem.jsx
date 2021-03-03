@@ -73,17 +73,20 @@ const PositionListItem = (props) => {
 
   useEffect(() => {
     setBoxColor("");
-    axios
-      .get(
-        `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
-      )
-      .then((res) => {
-        if (res.data.data.intraday[0].last) {
-          setCurrentPrice(res.data.data.intraday[0].last);
-        } else {
-          setCurrentPrice(res.data.data.intraday[0].high);
-        }
-      });
+    setTimeout(function () {
+      console.log("Making API call");
+      axios
+        .get(
+          `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+        )
+        .then((res) => {
+          if (res.data.data.intraday[0].last) {
+            setCurrentPrice(res.data.data.intraday[0].last);
+          } else {
+            setCurrentPrice(res.data.data.intraday[0].high);
+          }
+        });
+    }, props.apiCallDelayMS);
   }, []);
 
   useEffect(() => {

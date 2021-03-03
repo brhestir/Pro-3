@@ -10,6 +10,8 @@ const PositionListView = ({ getUserPositions }) => {
     .concat(inputArray)
     .sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 
+  let timeout = 250;
+
   return (
     <>
       <div className="columns is-mobile is-vcentered">
@@ -17,6 +19,8 @@ const PositionListView = ({ getUserPositions }) => {
           <div className="list">
             <ul>
               {sortedInputArray.map((curEl, index) => {
+                timeout += 250;
+
                 return (
                   <div
                     className="notification is-info is-light"
@@ -28,6 +32,7 @@ const PositionListView = ({ getUserPositions }) => {
                       buyPrice={curEl.buyPrice}
                       selPrice={curEl.selPrice}
                       getUserPositions={getUserPositions}
+                      apiCallDelayMS={timeout}
                     />
                   </div>
                 );
