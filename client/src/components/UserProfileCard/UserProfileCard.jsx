@@ -10,7 +10,7 @@ const UserProfileCard = (props) => {
     <>
       <div className="row">
         <div className="col s12 m6">
-          <div className="card blue-grey darken-1">
+          <div className="card blue-grey z-depth-3 darken-1">
             <div className="card-content white-text">
               <div className="row">
                 <div className="col s4 m6">

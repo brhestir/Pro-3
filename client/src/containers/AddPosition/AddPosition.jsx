@@ -62,12 +62,7 @@ const AddPosition = (props) => {
     <div>
       <div className="container">
         <div className="row">
-          <div className="col s12 center-align  purple accent-2">
-            <h1>Add Position</h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col s12">
+          <div className="col s12 push-s3">
             <UserProfileCard userObject={userObject} />
           </div>
         </div>
@@ -76,41 +71,49 @@ const AddPosition = (props) => {
       <div className="container">
         <div className="row">
           <div className="col s12 center-align  purple accent-2">
-            <h1>Add Position</h1>
-            <div className="input-field col s6 center-align deep-orange darken-1">
-              <input
-                className="input"
-                type="text"
-                placeholder="Enter Ticker Symbol"
-                value={stockName}
-                name="stockName"
-                onChange={(e) => {
-                  setStockName(e.target.value);
-                }}
-              />
-              <button
-                className="waves-effect waves-light btn-large"
-                type="submit"
-                onClick={handleSubmit}
-              >
-                <i className="material-icons right">show_chart</i>Get Current
-                Price
-              </button>
+            <h3>Add Position</h3>
+            <div className="row">
+              <div className="input-field col s6 push-s3 center-align deep-orange darken-1">
+                <input
+                  className="input center-align"
+                  type="text"
+                  placeholder="Enter Ticker Symbol"
+                  value={stockName}
+                  name="stockName"
+                  onChange={(e) => {
+                    setStockName(e.target.value);
+                  }}
+                />
+                <div className="row">
+                  <button
+                    className="waves-effect waves-light btn-large"
+                    type="submit"
+                    onClick={handleSubmit}
+                  >
+                    <i className="material-icons right">show_chart</i>Get
+                    Current Price
+                  </button>
+                </div>
+              </div>
             </div>
-
-            <div className="col s6 left-align green accent-3">
-              <div>Search information will show up under here:</div>
-              <div>Stock: {searchQuery}</div>
-              <div>Ticker: {searchTicker}</div>
-              <div>Price: {stockPrice}</div>
-              <button
-                className="waves-effect waves-light btn-large"
-                type="submit"
-                onClick={handleBtnAddtoPortfolio}
-              >
-                <i className="material-icons right">attach_money</i>Add to
-                Portfolio
-              </button>
+            <div className="row">
+              <div className="col s6 push-s3 left-align green accent-3">
+                <div>Search information will show up under here:</div>
+                <div>Stock: {searchQuery}</div>
+                <div>Ticker: {searchTicker}</div>
+                <div>Price: {stockPrice}</div>
+                <br></br>
+                <div className="row center-align">
+                  <button
+                    className="waves-effect waves-light pulse btn-large"
+                    type="submit"
+                    onClick={handleBtnAddtoPortfolio}
+                  >
+                    <i className="material-icons right">attach_money</i>Add to
+                    Portfolio
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -91,7 +91,7 @@ const PositionListItem = (props) => {
           <div className="column is-4">
             <div className="buttons has-addons is-centered">
               <button
-                className="waves-effect waves-light green accent-3 btn"
+                className="waves-effect waves-light green pulse accent-3 btn"
                 onClick={btnSellClickHandler}
               >
                 <i className="material-icons right">attach_money</i>SELL
