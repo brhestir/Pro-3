@@ -21,10 +21,29 @@ const PositionListItem = (props) => {
     console.log(`[Sell request] Sell price: ${currentPrice} `);
     console.log(`[Sell request] item % change: ${totalReturn}`);
 
+    let updatedUserLifetimeReturn = (userObject.totalChange += totalReturn);
+
     axios
-      .put(`/api/users/${userObject._id}`, { totalChange: 100 })
+      .put(`/api/users/${userObject._id}`, {
+        totalChange: updatedUserLifetimeReturn,
+      })
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
+        M.toast({
+          html: `Sold ${props.tickerSymbol}: Returned ${totalReturn.toFixed(
+            2
+          )} % [TEST MODE]`,
+          displayLength: 2000,
+        });
+        axios
+          .delete(`/api/positions/${props._id}`)
+          .then((response) => {
+            console.log(response);
+            props.getUserPositions();
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -40,7 +59,7 @@ const PositionListItem = (props) => {
         console.log(response);
         props.getUserPositions();
         M.toast({
-          html: "Position deleted",
+          html: "Position Deleted",
           displayLength: 2000,
         });
       })

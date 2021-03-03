@@ -22,7 +22,9 @@ const UserProfileCard = (props) => {
                 </div>
                 <div className="col s8 m6">
                   <p>{props.userObject.userName}</p>
-                  <p>Lifetime Return: {props.userObject.totalChange}%</p>
+                  <p>
+                    Lifetime Return: {props.userObject.totalChange.toFixed(1)} %
+                  </p>
                 </div>
               </div>
             </div>
