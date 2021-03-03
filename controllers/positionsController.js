@@ -6,7 +6,7 @@ const UNPROCESSABLE_ENTITY = 422;
 module.exports = {
 	findAll: function(req, res) {
 		db.Position.find(req.query)
-		 	.sort({ date: -1 })
+		 	.sort({ stockFullName: 1 })
 			.then((dbModel) => res.json(dbModel))
 			.catch((err) => res.status(UNPROCESSABLE_ENTITY).json(err));
 	},

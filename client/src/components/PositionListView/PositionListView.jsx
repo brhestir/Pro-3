@@ -6,7 +6,9 @@ import PositionsContext from "../../context/PositionsContext";
 const PositionListView = ({ getUserPositions }) => {
   const inputArray = useContext(PositionsContext);
 
-  // const testBuyPrice = 200.0;
+  const sortedInputArray = []
+    .concat(inputArray)
+    .sort((a, b) => (a.created_at > b.created_at ? -1 : 1));
 
   return (
     <>
@@ -14,7 +16,7 @@ const PositionListView = ({ getUserPositions }) => {
         <div className="column">
           <div className="list">
             <ul>
-              {inputArray.map((curEl, index) => {
+              {sortedInputArray.map((curEl, index) => {
                 return (
                   <div
                     className="notification is-info is-light"
