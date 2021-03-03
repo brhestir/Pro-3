@@ -13,17 +13,6 @@ const PositionListItem = (props) => {
   let { userObject /*, setUserObject*/ } = useContext(GlobalContext);
 
   const btnSellClickHandler = (e) => {
-    console.log(
-      `[Sell request] Call into btnSellClickHandler from listItem for id: ${props._id}`
-    );
-    console.log(
-      `[Sell request] Current userObject userName is: ${userObject.userName}`
-    );
-    console.log(`[Sell request] Current user _id is: ${userObject._id}`);
-    console.log(`[Sell request] Bought price: ${props.buyPrice} `);
-    console.log(`[Sell request] Sell price: ${currentPrice} `);
-    console.log(`[Sell request] item % change: ${totalReturn}`);
-
     let updatedUserLifetimeReturn = (userObject.totalChange += totalReturn);
 
     axios
@@ -31,7 +20,6 @@ const PositionListItem = (props) => {
         totalChange: updatedUserLifetimeReturn,
       })
       .then((response) => {
-        //console.log(response.data);
         M.toast({
           html: `Sold ${props.tickerSymbol}: Returned ${totalReturn.toFixed(
             2
@@ -41,7 +29,6 @@ const PositionListItem = (props) => {
         axios
           .delete(`/api/positions/${props._id}`)
           .then((response) => {
-            console.log(response);
             props.getUserPositions();
           })
           .catch((err) => {
@@ -54,12 +41,9 @@ const PositionListItem = (props) => {
   };
 
   const btnDeleteClickHandler = (e) => {
-    console.log(`btnDeleteClickHandler: ${props._id}`);
-
     axios
       .delete(`/api/positions/${props._id}`)
       .then((response) => {
-        console.log(response);
         props.getUserPositions();
         M.toast({
           html: "Position Deleted",
@@ -74,7 +58,6 @@ const PositionListItem = (props) => {
   useEffect(() => {
     setBoxColor("");
     setTimeout(function () {
-      console.log("Making API call");
       axios
         .get(
           `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`

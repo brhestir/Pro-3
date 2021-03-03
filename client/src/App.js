@@ -27,9 +27,6 @@ function App() {
 				if(err) {
 					console.log(err);	// Invalid session token
 				} else {
-					console.log(`[i] Setting userObject to decoded stored sessionToken...`);
-					console.log(`[i] Decoded object is:`);
-					console.log(decoded);
 					setUserObject(decoded);
 				}
 			})
