@@ -98,7 +98,7 @@ const PositionListItem = (props) => {
 
   return (
     <>
-      <div className="container">
+      <div className="container z-depth-3">
         <div className={boxColor}>
           <div className="row">
             <div className="col s3">Ticker: {props.tickerSymbol}</div>
