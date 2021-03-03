@@ -10,7 +10,7 @@ const UserProfileCard = (props) => {
     <>
       <div className="row">
         <div className="col s12 m6">
-          <div className="card blue-grey z-depth-3 darken-1">
+          <div className="card teal darken-4">
             <div className="card-content white-text">
               <div className="row">
                 <div className="col s4 m6">
@@ -22,9 +22,12 @@ const UserProfileCard = (props) => {
                 </div>
                 <div className="col s8 m6">
                   <p>{props.userObject.userName}</p>
-                  <p>
-                    Lifetime Return: {props.userObject.totalChange.toFixed(1)} %
-                  </p>
+                  {props.userObject.totalChange && (
+                    <p>
+                      Lifetime Return: {props.userObject.totalChange.toFixed(2)}
+                      %
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
