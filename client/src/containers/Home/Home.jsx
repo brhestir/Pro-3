@@ -1,20 +1,17 @@
 import React from "react";
+import diamondHandsMascot from "../../assets/images/diamondHandsMascot.png"
 
 const Home = () => {
   return (
     <>
-      <div className="container">
-        <div className="section is-medium"></div>
-        <div className="section is-medium">
-          <div className="level">
-            <div className="level-item has-text-centered">
+      <div className="container center-align">
               <div>
-                <h1 className="is-size-1">This is the home page.</h1>
+                <img src={diamondHandsMascot} height="400" />
+                <h3>Have you been diagnosed with a chronic case of "Paper Hands?"</h3>
+                <h3>Click "Sign Up" to begin your journey to the moon!</h3>
+
               </div>
             </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 };

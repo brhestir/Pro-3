@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import businessManPng from "../../assets/images/business-man.png";
+import diamondHands from "../../assets/images/diamondhands.png"
 
 const NavbarVanilla = () => {
   return (
@@ -12,7 +13,7 @@ const NavbarVanilla = () => {
       >
         <div className="brand-logo center">
           <Link className="navbar-item" to="/">
-            <img src={businessManPng} width="30" alt="WSB chap" />
+            <img src={diamondHands} width="300" alt="WSB chap" />
           </Link>
         </div>
 
