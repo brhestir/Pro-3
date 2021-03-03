@@ -26,7 +26,6 @@ const Signup = () => {
         password: password,
       })
       .then((response) => {
-        console.log(response.data);
         jwt.verify(
           response.data.token,
           process.env.REACT_APP_SECRET,
@@ -34,8 +33,7 @@ const Signup = () => {
             if (err) {
               console.log(err);
             } else {
-              // Call the setJwt callback to set the jwt state variable in App.js
-              console.log(`[i] Setting jwt...`);
+              // Call the setJwt callback to set the jwt(token) state variable in App.js
               setToken(response.data.token);
               // Decode the jwt to get the userObject, then store the decoded user object in the userObject state in App.js
               const decodedUserObject = jwt_decode(response.data.token);

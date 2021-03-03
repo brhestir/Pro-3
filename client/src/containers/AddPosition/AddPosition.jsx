@@ -30,7 +30,6 @@ const AddPosition = (props) => {
         `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=10&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
-        console.log(res.data);
         if (res.data.data.intraday[0].last) {
           setStockPrice(res.data.data.intraday[0].last);
         } else {
@@ -42,7 +41,6 @@ const AddPosition = (props) => {
   };
 
   const handleBtnAddtoPortfolio = () => {
-    console.log("handleBtnAddToPortfolio() executing...");
     setBoxVisible("scale-transition scale-out");
     axios
       .post("/api/positions", {
@@ -51,11 +49,6 @@ const AddPosition = (props) => {
         buyPrice: stockPrice,
       })
       .then((response) => {
-        //console.log(response);
-
-        // Now that we have the position ID, create a new position in the user_DB_entry.positions field.
-        //console.log(props.userObject._id);
-        //console.log(response.data._id);
         axios
           .put(`/api/users/${userObject._id}`, {
             $push: { positions: response.data._id },
@@ -65,7 +58,7 @@ const AddPosition = (props) => {
             history.push("/positions/all");
           })
           .catch((err) => {
-            console.log(`User ${userObject._id} update error: ${err}`);
+            console.log(`[e] User ${userObject._id} update error: ${err}`);
           });
       });
   };

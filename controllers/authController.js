@@ -18,7 +18,7 @@ module.exports = {
 		}
 		bcrypt.hash(req.body.password, NUM_SALT_ROUNDS, (err, hashedPassword) => {
 			if(err) throw new Error(err);
-			console.log(hashedPassword);
+			
 			userToCreate.password = hashedPassword;
 			
 			db.User.create(userToCreate).then((newUser) => {
