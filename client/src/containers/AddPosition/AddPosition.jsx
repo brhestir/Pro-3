@@ -21,11 +21,16 @@ const AddPosition = (props) => {
     e.preventDefault();
     axios
       .get(
-        `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+        `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=10&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
       )
       .then((res) => {
         console.log(res.data);
-        setStockPrice(res.data.data.intraday[0].last);
+        if (res.data.data.intraday[0].last) {
+          setStockPrice(res.data.data.intraday[0].last);
+        } else {
+          setStockPrice(res.data.data.intraday[0].high);
+
+        }
         setSearchQuery(res.data.data.name);
         setSearchTicker(stockName);
       });
