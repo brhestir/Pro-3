@@ -78,10 +78,10 @@ const AddPosition = (props) => {
 
       <div className="container">
         <div className="row">
-          <div className="col s8 push-s2 center-align z-depth-3 purple accent-2">
+          <div className="col s8 push-s2 center-align z-depth-3 teal darken-4">
             <h3>Add Position</h3>
             <div className="row">
-              <div className="input-field col s6 push-s3 z-depth-3 center-align deep-orange darken-1">
+              <div className="input-field col s6 push-s3 z-depth-3 center-align blue darken-1">
                 <input
                   className="input center-align"
                   type="text"
@@ -106,7 +106,7 @@ const AddPosition = (props) => {
             </div>
             <div className={boxVisible}>
               <div className="row">
-                <div className="col s6 push-s3 center-align z-depth-3 green accent-3">
+                <div className="col s6 push-s3 center-align z-depth-3 blue darken-1">
                   <div>
                     <h4>{searchTicker}</h4>
                   </div>

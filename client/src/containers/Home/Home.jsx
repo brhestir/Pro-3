@@ -1,5 +1,6 @@
 import React from "react";
 import diamondHandsMascot from "../../assets/images/diamondHandsMascot.png"
+import "./Home.css";
 
 const Home = () => {
   return (

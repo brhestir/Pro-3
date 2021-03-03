@@ -5,6 +5,8 @@ import M from "materialize-css";
 
 const PositionListItem = (props) => {
   const [currentPrice, setCurrentPrice] = useState("");
+  const [boxColor, setBoxColor] = useState("");
+
   const totalReturn = ((currentPrice - props.buyPrice) / props.buyPrice) * 100;
 
   let { userObject /*, setUserObject*/ } = useContext(GlobalContext);
@@ -79,13 +81,19 @@ const PositionListItem = (props) => {
         } else {
           setCurrentPrice(res.data.data.intraday[0].high);
         }
+        if (totalReturn > 0) {
+          setBoxColor("green accent-4")
+        } else {
+          setBoxColor("red lighten-1")
+        }
       });
   }, []);
 
   return (
     <>
       <div className="container">
-        <div className="row amber accent-3">
+        <div className={boxColor}>
+        <div className="row">
           <div className="col s3">Ticker: {props.tickerSymbol}</div>
           <div className="col s3">Buy Price: ${props.buyPrice}</div>
           <div className="col s3">Current Price: ${currentPrice}</div>
@@ -110,6 +118,7 @@ const PositionListItem = (props) => {
             </div>
           </div>
           <div></div>
+        </div>
         </div>
       </div>
     </>
