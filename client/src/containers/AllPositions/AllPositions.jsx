@@ -37,16 +37,26 @@ const AllPositions = (props) => {
 
   return (
     <>
-      <div className="container center-align">
-        <div className="row light-blue accent-3">
-          <h1>All Positions</h1>
+      <div className="container">
+        <div className="row">
+          <div className="col s12 push-s3">
+            <UserProfileCard userObject={userObject} />
+          </div>
         </div>
-        <UserProfileCard userObject={userObject} />
-        {/*value passed to provider must be declared with useState*/}
-        <PositionsContext.Provider value={positions}>
-          <PositionListView getUserPositions={getUserPositions} />
-        </PositionsContext.Provider>
       </div>
+      <div className="container">
+        <div className="row">
+          <div className="col s12 center-align light-blue accent-3">
+            <h1>All Positions</h1>
+            <div className="row">
+              <PositionsContext.Provider value={positions}>
+                <PositionListView getUserPositions={getUserPositions} />
+              </PositionsContext.Provider>
+            </div>
+          </div>
+        </div>
+      </div>
+      "
     </>
   );
 };

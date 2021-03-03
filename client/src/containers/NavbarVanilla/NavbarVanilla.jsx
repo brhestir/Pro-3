@@ -7,7 +7,7 @@ const NavbarVanilla = () => {
   return (
     <>
       <nav
-        className="nav-wrapper"
+        className="nav-wrapper teal darken-4"
         role="navigation"
         aria-label="main navigation"
       >
