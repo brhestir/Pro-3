@@ -6,7 +6,7 @@ import PositionsContext from "../../context/PositionsContext";
 const PositionListView = ({ getUserPositions }) => {
   const inputArray = useContext(PositionsContext);
 
-  const testBuyPrice = 200.0;
+  // const testBuyPrice = 200.0;
 
   return (
     <>
@@ -23,7 +23,7 @@ const PositionListView = ({ getUserPositions }) => {
                     <PositionListViewItem
                       _id={curEl._id}
                       tickerSymbol={curEl.tickerSymbol}
-                      buyPrice={testBuyPrice}
+                      buyPrice={curEl.buyPrice}
                       selPrice={curEl.selPrice}
                       getUserPositions={getUserPositions}
                     />

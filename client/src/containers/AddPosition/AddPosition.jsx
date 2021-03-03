@@ -4,6 +4,7 @@ import React, { useState, useContext } from "react";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 import GlobalContext from "../../context/GlobalContext";
 import M from "materialize-css";
+import { useHistory } from "react-router-dom";
 
 // TODO: Change variable names so they're not so confusing.
 
@@ -18,6 +19,8 @@ const AddPosition = (props) => {
   const { userObject /*, setUserObject, token, setToken*/ } = useContext(
     GlobalContext
   );
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,6 +62,7 @@ const AddPosition = (props) => {
           })
           .then((response) => {
             M.toast({ html: `Added Position: ${searchTicker.toUpperCase()}` });
+            history.push("/positions/all");
           })
           .catch((err) => {
             console.log(`User ${userObject._id} update error: ${err}`);
