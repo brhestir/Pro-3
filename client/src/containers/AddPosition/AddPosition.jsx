@@ -40,6 +40,7 @@ const AddPosition = (props) => {
 
   const handleBtnAddtoPortfolio = () => {
     console.log("handleBtnAddToPortfolio() executing...");
+    setBoxVisible("scale-transition scale-out");
     axios
       .post("/api/positions", {
         stockFullName: searchQuery,
@@ -88,7 +89,7 @@ const AddPosition = (props) => {
                   value={stockName}
                   name="stockName"
                   onChange={(e) => {
-                    setStockName(e.target.value);
+                    setStockName(e.target.value.toUpperCase());
                   }}
                 />
                 <div className="row">
@@ -105,11 +106,16 @@ const AddPosition = (props) => {
             </div>
             <div className={boxVisible}>
               <div className="row">
-                <div className="col s6 push-s3 left-align z-depth-3 green accent-3">
-                  <div>Search information will show up under here:</div>
-                  <div>Stock: {searchQuery}</div>
-                  <div>Ticker: {searchTicker}</div>
-                  <div>Price: {stockPrice}</div>
+                <div className="col s6 push-s3 center-align z-depth-3 green accent-3">
+                  <div>
+                    <h4>{searchTicker}</h4>
+                  </div>
+                  <div>
+                    <h5>{searchQuery}</h5>
+                  </div>
+                  <div>
+                    <h4>Current Price: ${stockPrice}</h4>
+                  </div>
                   <br></br>
                   <div className="row center-align">
                     <button
