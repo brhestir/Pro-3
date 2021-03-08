@@ -51,35 +51,6 @@ const Login = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col s12 m6">
-          <div className="card blue-grey darken-1">
-            <div className="card-content white-text">
-              <span className="cart-title">Card Title</span>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Repellendus in voluptatum eum adipisci illo doloribus iure,
-                fugiat magnam corporis pariatur similique! Maxime veniam a
-                repellat ducimus accusantium ipsa excepturi dolores fugiat
-                sapiente nulla unde, eaque delectus sed assumenda officiis odit
-                exercitationem minima magni illum, animi quia odio facere
-                perferendis. Atque itaque et illo perspiciatis alias, rerum sit
-                doloribus dignissimos nostrum minima quam corporis assumenda
-                animi maiores architecto ex, quos officia quibusdam eveniet
-                neque voluptatibus veniam quidem? Ratione rerum voluptas
-                commodi, alias esse quis eos ut itaque sit, inventore odio sunt
-                totam error amet placeat. Incidunt beatae commodi nisi ut
-                recusandae?
-              </p>
-            </div>
-            <div className="card-action">
-              <a href="#">This is a link</a>
-              <a href="#">This is another link</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <br></br>
       <div className="container">
         <div className="row">
@@ -88,47 +59,39 @@ const Login = () => {
             <h4>Please login to continue:</h4>
             <div className="row">
               <form onSubmit={handleFormSubmit}>
-                <div className="control has-icons-left has-icons-right">
-                  <input
+                <div className="control">
+								
+									<input
                     className="input"
                     id="userName"
                     type="text"
                     name="userName"
                     value={userName}
-                    placeholder="Enter username"
+                    placeholder=""
                     onChange={(e) => {
                       setUserName(e.target.value);
                     }}
                   />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-user"></i>
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-check"></i>
-                  </span>
+									<i className="small material-icons ">account_circle</i>
                 </div>
 
                 <div className="columns">
                   <div className="column is-3"></div>
                   <div className="field column is-6">
-                    <div className="control has-icons-left has-icons-right">
-                      <input
+                    <div className="control">
+										
+											<input
                         className="input"
                         id="email"
                         type="text"
                         name="email"
                         value={email}
-                        placeholder="Enter email address"
+                        placeholder=""
                         onChange={(e) => {
                           setEmail(e.target.value);
                         }}
                       />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-envelope"></i>
-                      </span>
-                      <span className="icon is-small is-right">
-                        <i className="fas fa-check"></i>
-                      </span>
+											<i className="small material-icons">email</i>
                     </div>
                   </div>
                 </div>
@@ -136,24 +99,20 @@ const Login = () => {
                 <div className="columns">
                   <div className="column is-3"></div>
                   <div className="field column is-6">
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control">
+										
                       <input
                         className="input"
                         id="password"
                         type="password"
                         name="password"
                         value={password}
-                        placeholder="Enter password"
+                        placeholder=""
                         onChange={(e) => {
                           setPassword(e.target.value);
                         }}
                       />
-                      <span className="icon is-small is-left">
-                        <i className="fas fa-key"></i>
-                      </span>
-                      <span className="icon is-small is-right">
-                        <i className="fas fa-check"></i>
-                      </span>
+											<i className="small material-icons">vpn_key</i>
                     </div>
                   </div>
                 </div>
