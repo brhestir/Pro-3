@@ -51,7 +51,11 @@ Questions/comments/suggestions welcome.
 
 ## Acknowledgements
 
-- Thanks to Peter Colella for helping us improve performance and manage complexity as it arose.
-- Thanks to Jude Clark, et. al. for helping us with authentication and persisting user login across page refresh.
+- Thanks to [Peter Colella](https://github.com/petercolella) for helping us improve performance and manage complexity as it arose.
+- Thanks to [Jude Clark](https://github.com/judeclark19) et. al. ([Jada Vianett](https://github.com/jadavianett), [Ashley Brown](https://github.com/afbrown1216) and [Navdeep Puri](https://github.com/NavdeepDP)) for helping us with authentication and persisting user login across the refresh process.
 - Heartfelt thanks to everyone at Georgia Tech, 2U, the TAs, instructors, facilitators, peers, friends, parents and many others for helping us learn a few things about developing software systems over the last three months and in general.
-- Special Thanks to Jonathan Watson for helping us with bootstrap, loading libraries and keeping everything running efficiently during the boot(camp) process.
+- Special Thanks to [Jonathan Watson](https://github.com/jonathanjwatson) for helping us with bootstrap(ing), loading libraries and keeping everything running efficiently during the boot(camp) process.
+
+## Credits
+
+- Photo by [Pratikxox](https://www.pexels.com/@pratikxox-1643052?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels) from [Pexels](https://www.pexels.com/photo/heap-of-golden-and-silver-coins-3222685/?utm_content=attributionCopyText&utm_medium=referral&utm_source=pexels)
