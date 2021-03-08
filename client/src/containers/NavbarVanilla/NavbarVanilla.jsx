@@ -23,8 +23,8 @@ const NavbarVanilla = () => {
 						<ul className="right hide-on-med-and-down">
 							{ userObject._id && ( <li><Link to="/positions/add">Add Position</Link></li> )}
 							{ userObject._id && ( <li><Link to="/positions/all">View Positions</Link></li> )}
-							<li><Link to="/signup">Sign up<i className="material-icons right">person_add</i></Link></li>
-							<li><Link to="/login">Log in<i className="material-icons right">assignment_ind</i></Link></li>
+							{!userObject._id && ( <li><Link to="/signup">Sign up<i className="material-icons right">person_add</i></Link></li> )}
+							{!userObject._id && ( <li><Link to="/login">Log in<i className="material-icons right">assignment_ind</i></Link></li> )}
 						</ul>
 
 					</div>
@@ -33,8 +33,8 @@ const NavbarVanilla = () => {
 			<ul class="sidenav" id="mobile-demo">
 				{ userObject._id && ( <li><Link to="/positions/add">Add Position</Link></li> )}
 				{ userObject._id && ( <li><Link to="/positions/all">View Positions</Link></li> )}
-				<li><Link to="/signup">Sign up<i className="material-icons right">person_add</i></Link></li>
-				<li><Link to="/login">Log in<i className="material-icons right">assignment_ind</i></Link></li>
+				{!userObject._id && ( <li><Link to="/signup">Sign up<i className="material-icons right">person_add</i></Link></li> )}
+				{!userObject._id && ( <li><Link to="/login">Log in<i className="material-icons right">assignment_ind</i></Link></li> )}
 			</ul>
 		</>
   );
