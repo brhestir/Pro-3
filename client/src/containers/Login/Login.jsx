@@ -5,6 +5,8 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import GlobalContext from "../../context/GlobalContext";
 import M from "materialize-css";
+import "./Login.css";
+
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -13,7 +15,7 @@ const Login = () => {
   const history = useHistory();
   const { setUserObject, setToken } = useContext(GlobalContext);
 
-  const handleFormSubmit = (e) => {
+  const handleLoginFormSubmit = (e) => {
     e.preventDefault();
     axios
       .post("/api/auth/login", {
@@ -51,105 +53,73 @@ const Login = () => {
 
   return (
     <>
-      <br></br>
-      <div className="container">
-        <div className="row">
-          <div className="col s8 push-s2 center-align z-depth-3 teal darken-4">
-            <h4>Welcome Back!</h4>
-            <h4>Please login to continue:</h4>
-            <div className="row">
-              <form onSubmit={handleFormSubmit}>
-                <div className="control">
-								
+			<div className="row">
+				<div className="col s12 m8 l6 offset-m2 offset-l3">
+					<div className="card teal darken-4 z-depth-3">
+						<div className="card-content white-text">
+							<span class="card-title">Welcome Back!</span>
+							<form onSubmit={handleLoginFormSubmit}>
+								<div className="input-field">
+									<i className="material-icons prefix">account_circle</i>
 									<input
-                    className="input"
-                    id="userName"
-                    type="text"
-                    name="userName"
-                    value={userName}
-                    placeholder=""
-                    onChange={(e) => {
-                      setUserName(e.target.value);
-                    }}
-                  />
-									<i className="small material-icons ">account_circle</i>
-                </div>
-
-                <div className="columns">
-                  <div className="column is-3"></div>
-                  <div className="field column is-6">
-                    <div className="control">
-										
-											<input
-                        className="input"
-                        id="email"
-                        type="text"
-                        name="email"
-                        value={email}
-                        placeholder=""
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
-                      />
-											<i className="small material-icons">email</i>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="columns">
-                  <div className="column is-3"></div>
-                  <div className="field column is-6">
-                    <div className="control">
-										
-                      <input
-                        className="input"
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={password}
-                        placeholder=""
-                        onChange={(e) => {
-                          setPassword(e.target.value);
-                        }}
-                      />
-											<i className="small material-icons">vpn_key</i>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="has-text-centered">
-                  <button
-                    className="btn waves-effect waves-light"
-                    type="submit"
-                    name="action"
-                    value="Submit Input"
-                  >
-                    Log In
-                    <i className="fab fa-github right"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* add "is-active" to below modal div to activate, use conditional rendering and "login success state?" */}
-      <div className="modal">
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">Modal title</p>
-            <button className="delete" aria-label="close"></button>
-          </header>
-          <section className="modal-card-body">
-            <p>You are now logged in!</p>
-          </section>
-          <footer className="modal-card-foot">
-            <button className="button is-success">Continue</button>
-          </footer>
-        </div>
-      </div>
+										className="validate"
+										id="userName"
+										type="text"
+										name="userName"
+										value={userName}
+										placeholder=""
+										onChange={(e) => {
+											setUserName(e.target.value);
+										}}
+									/>
+									<label for="userName">Username</label>
+								</div>
+								<div className="input-field">
+									<i className="material-icons prefix">email</i>
+									<input
+										class="validate"
+										id="email"
+										type="email"
+										name="email"
+										value={email}
+										placeholder=""
+										onChange={(e)=> {
+											setEmail(e.target.value);
+										}}
+									/>
+									<label for="email">Email</label>
+								</div>
+								<div className="input-field">
+									<i className="material-icons prefix">vpn_key</i>
+									<input
+										class="validate"
+										id="password"
+										type="password"
+										name="password"
+										value={password}
+										placeholder=""
+										onChange={(e) => {
+											setPassword(e.target.value);
+										}}
+									/>
+									<label for="password">Password</label>
+								</div>
+								<div className="card-action">
+									<button
+										className="btn waves-effect waves-light"
+										type="submit"
+										name="action"
+										value="Submit Input"
+									>
+										Log In
+										<i className="fab fa-github right"></i>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
     </>
   );
 };
