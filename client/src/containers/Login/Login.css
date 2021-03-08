@@ -1,0 +1,20 @@
+/* ./client/src/containers/Login/Login.css */
+body {
+  overflow-x: hidden;
+}
+
+.validate {
+  color: white;
+}
+
+.card {
+  border-radius: 8px;
+}
+
+.username-input-field {
+  margin-top: 30px;
+}
+
+.card-content {
+  margin-top: 30px;
+}

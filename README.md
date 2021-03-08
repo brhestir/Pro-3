@@ -25,6 +25,17 @@ Get in on the action in a risk-free arena with Diamond Hands, a paper-trading si
 
 [Deployed Heroku Instance](https://serene-bastion-85058.herokuapp.com/)
 
+## Technologies Used
+
+- [Nodejs/node](https://github.com/nodejs/node)
+- [Express.js](https://github.com/expressjs/express)
+- [Mongoose](https://github.com/Automattic/mongoose)
+- [Mongo](https://github.com/mongodb/mongo)
+- [AtlasDB](https://github.com/palantir/atlasdb)
+- [React](https://github.com/facebook/react)
+- [HerokuCLI](https://github.com/heroku/cli)
+- [Materializecss](https://github.com/dogfalo/materialize)
+
 ## Installation
 
 ```bash
