@@ -10,12 +10,8 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const { /*userObject,*/ setUserObject, /*token,*/ setToken } = useContext(
-    GlobalContext
-  );
-
   const history = useHistory();
+  const { setUserObject, setToken } = useContext(GlobalContext);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +27,7 @@ const Login = () => {
           process.env.REACT_APP_SECRET,
           (err, decoded) => {
             if (err) {
-              console.log(err); // If login is invalid, perform "foo"
+              console.log(err); // If login is invalid
             } else {
               // Call the setJwt callback to set the jwt state variable in App.js
               setToken(response.data.token);
@@ -39,17 +35,11 @@ const Login = () => {
               const decodedUserObject = jwt_decode(response.data.token);
               setUserObject(decodedUserObject);
 
-              // Materialize Toast w/ callback to redirect to all-positions page
               M.toast({
                 html: "You are logged in! Redirecting...",
                 completeCallback: history.push("/positions/all"),
                 displayLength: 2000,
               });
-              // This MUST be converted into a modal or non-modal TOAST with UI-Framework
-              //alert(`You are now logged in!`);
-
-              // If login valid, go to logged-in-STATE
-              //history.push("/positions/all");
             }
           }
         );
@@ -61,6 +51,35 @@ const Login = () => {
 
   return (
     <>
+      <div className="row">
+        <div className="col s12 m6">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <span className="cart-title">Card Title</span>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Repellendus in voluptatum eum adipisci illo doloribus iure,
+                fugiat magnam corporis pariatur similique! Maxime veniam a
+                repellat ducimus accusantium ipsa excepturi dolores fugiat
+                sapiente nulla unde, eaque delectus sed assumenda officiis odit
+                exercitationem minima magni illum, animi quia odio facere
+                perferendis. Atque itaque et illo perspiciatis alias, rerum sit
+                doloribus dignissimos nostrum minima quam corporis assumenda
+                animi maiores architecto ex, quos officia quibusdam eveniet
+                neque voluptatibus veniam quidem? Ratione rerum voluptas
+                commodi, alias esse quis eos ut itaque sit, inventore odio sunt
+                totam error amet placeat. Incidunt beatae commodi nisi ut
+                recusandae?
+              </p>
+            </div>
+            <div className="card-action">
+              <a href="#">This is a link</a>
+              <a href="#">This is another link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <br></br>
       <div className="container">
         <div className="row">
