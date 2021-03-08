@@ -5,6 +5,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import GlobalContext from "../../context/GlobalContext";
 import M from "materialize-css";
+import "./Signup.css";
 
 const Signup = () => {
   const [userName, setUserName] = useState("");
@@ -60,7 +61,8 @@ const Signup = () => {
 				<div className="col s12 m8 l6 offset-m2 offset-l3">
 					<div className="card teal darken-4 z-depth-3">
 						<div className="card-content white-text">
-							<span class="card-title">Welcome!  Please sign up below:</span>
+							<span class="card-title">Welcome!</span>
+							<span>Please create an account to proceed:</span>
 							<form onSubmit={handleSignupFormSubmit}>
 								<div className="input-field">
 									<i className="material-icons prefix">account_circle</i>

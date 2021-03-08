@@ -14,7 +14,7 @@ const NavbarVanilla = () => {
 	
 	useEffect(() => {
 		let sidenavElem = document.getElementById('app-sidenav');
-		let sidenavInstances = M.Sidenav.init(sidenavElem);
+		let sidenavInstances = M.Sidenav.init(sidenavElem, { draggable: true });
 		sidenavInstances.open();
 	}, []);
 
@@ -31,7 +31,7 @@ const NavbarVanilla = () => {
 				<nav>
 					<div className="nav-wrapper teal darken-4" role="navigation" aria-label="main navigation">
 						<Link className="brand-logo center" to="/"><img src={diamondHands} width="300" alt="Diamond Hands Logo"/></Link>
-						<Link className="sidenav-trigger" to="#" data-target="app-sidenav"><i class="material-icons">menu</i></Link>
+						<Link className="sidenav-trigger" data-target="app-sidenav" to="#"><i class="material-icons">menu</i></Link>
 						<ul className="right hide-on-med-and-down">
 							{ userObject._id && ( <li><Link to="/positions/add">Add Position</Link></li> )}
 							{ userObject._id && ( <li><Link to="/positions/all">View Positions</Link></li> )}

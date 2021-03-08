@@ -38,7 +38,7 @@ const Login = () => {
               setUserObject(decodedUserObject);
 
               M.toast({
-                html: "You are logged in! Redirecting...",
+                html: "Logged in successfully!",
                 completeCallback: history.push("/positions/all"),
                 displayLength: 2000,
               });
@@ -58,8 +58,9 @@ const Login = () => {
 					<div className="card teal darken-4 z-depth-3">
 						<div className="card-content white-text">
 							<span class="card-title">Welcome Back!</span>
+							<span>Please log in to proceed:</span>
 							<form onSubmit={handleLoginFormSubmit}>
-								<div className="input-field">
+								<div className="input-field username-input-field">
 									<i className="material-icons prefix">account_circle</i>
 									<input
 										className="validate"
@@ -72,7 +73,7 @@ const Login = () => {
 											setUserName(e.target.value);
 										}}
 									/>
-									<label for="userName">Username</label>
+									<label className="active" for="userName">Username</label>
 								</div>
 								<div className="input-field">
 									<i className="material-icons prefix">email</i>
@@ -87,7 +88,7 @@ const Login = () => {
 											setEmail(e.target.value);
 										}}
 									/>
-									<label for="email">Email</label>
+									<label className="active" for="email">Email</label>
 								</div>
 								<div className="input-field">
 									<i className="material-icons prefix">vpn_key</i>
@@ -102,9 +103,9 @@ const Login = () => {
 											setPassword(e.target.value);
 										}}
 									/>
-									<label for="password">Password</label>
+									<label className="active" for="password">Password</label>
 								</div>
-								<div className="card-action">
+								<div className="card-action center">
 									<button
 										className="btn waves-effect waves-light"
 										type="submit"
