@@ -47,7 +47,7 @@ const AllPositions = (props) => {
       <div className="container">
         <div className="row">
           <div className="col s8 push-s2 center-align card z-depth-3 teal darken-4">
-            <h1>All Positions</h1>
+            <h2>All Positions</h2>
             <div className="row">
               <PositionsContext.Provider value={positions}>
                 <PositionListView getUserPositions={getUserPositions} />
