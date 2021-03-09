@@ -74,10 +74,10 @@ const PositionListItem = (props) => {
 
   useEffect(() => {
     if (totalReturn > 0) {
-      setBoxColor("green accent-3");
+      setBoxColor("green card accent-3");
       setButtonPulse("waves-effect waves-light pulse green darken-4 btn");
     } else {
-      setBoxColor("red accent-2");
+      setBoxColor("red card accent-2");
       setButtonPulse("waves-effect waves-light green darken-4 btn");
     }
   }, [totalReturn]);
