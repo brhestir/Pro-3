@@ -109,15 +109,15 @@ const Signup = () => {
 									/>
 									<label for="password">Password</label>
 								</div>
-								<div className="card-action">
+								<div className="card-action center">
 									<button
 										className="btn waves-effect waves-light"
 										type="submit"
 										name="action"
 										value="Submit Input"
 									>
-										Log In
-										<i className="fab fa-github right"></i>
+										Register
+										<i className="material-icons right tiny">person_add</i>
 									</button>
 								</div>
 							</form>      

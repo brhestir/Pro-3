@@ -113,7 +113,7 @@ const Login = () => {
 										value="Submit Input"
 									>
 										Log In
-										<i className="fab fa-github right"></i>
+										<i className="material-icons right tiny">assignment_ind</i>
 									</button>
 								</div>
 							</form>

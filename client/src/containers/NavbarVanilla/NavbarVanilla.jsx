@@ -39,6 +39,10 @@ const NavbarVanilla = () => {
 							{!userObject._id && ( <li><Link to="/signup">Sign up<i className="material-icons left tiny">person_add</i></Link></li> )}
 							{!userObject._id && ( <li><Link to="/login">Log in<i className="material-icons left tiny">assignment_ind</i></Link></li> )}
 						</ul>
+						<ul className="left hide-on-med-and-down">
+						<li><a href="https://github.com/brhestir">Brian Hestir<i className="fab fa-github right"></i></a></li>
+						<li><a href="https://github.com/Pkeld148">Paul Keldsen<i className="fab fa-github right"></i></a></li>
+						</ul>
 
 					</div>
 				</nav>

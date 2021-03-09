@@ -76,7 +76,7 @@ const AddPosition = (props) => {
       <div className="container">
         <div className="row">
           <div className="col s8 push-s2 center-align card z-depth-3 teal darken-4">
-            <h3>Add Position</h3>
+            <h2>Add Position</h2>
             <div className="row">
               <div className="input-field col s6 card push-s3 z-depth-3 center-align green accent-4">
                 <input
