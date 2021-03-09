@@ -103,7 +103,7 @@ const AddPosition = (props) => {
             </div>
             <div className={boxVisible}>
               <div className="row">
-                <div className="col s6 push-s3 center-align z-depth-3 green accent-4">
+                <div className="col s6 push-s3 center-align card z-depth-3 green accent-4">
                   <div>
                     <h4>{searchTicker}</h4>
                   </div>
