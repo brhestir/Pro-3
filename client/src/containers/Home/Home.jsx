@@ -1,6 +1,5 @@
 import React from "react";
 import diamondHandsMascot from "../../assets/images/diamondHandsMascot.png"
-import ChartComponent from "../../components/ChartComponent/ChartComponent";
 import "./Home.css";
 
 const Home = () => {
@@ -8,8 +7,8 @@ const Home = () => {
     <>
       <div className="container center-align">
               <div>
-                <img src={diamondHandsMascot} height="400" alt="Investor with Diamond Hands"/>
-                <ChartComponent />
+                <img src={diamondHandsMascot} height="400" />
+                <h3>Have you been diagnosed with a chronic case of "Paper Hands?"</h3>
                 <h3>Click "Sign Up" to begin your journey to the moon!</h3>
               </div>
             </div>
