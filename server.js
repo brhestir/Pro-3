@@ -1,7 +1,7 @@
 // ./server.js
-require('dotenv').config();													// to include env vars
-const path = require('path');
-const axios = require('axios');
+require("dotenv").config();													// include env vars
+const path = require("path");
+const axios = require("axios");
 const express = require ("express");
 const mongoose = require("mongoose");
 const app = express();
@@ -15,15 +15,14 @@ const db = require("./models/index");
 // Prevent Heroku from idling (Thanks to Peter Colella)
 // If we happen to be in production, generate a hearbeat signal to maintain deployed client-side request attendance
 if (process.env.NODE_ENV === "production") {
-	console.log(`❤️  -> Heartbeat signal established; Interval -> 4 min`);
+	console.log("❤️  -> Heartbeat signal established; Interval -> 4 min");
 	setInterval(() => {
-		axios.get("https://serene-bastion-85058.herokuapp.com")
-		.then((response) => {
-			console.log(`❤️  -> Beat recieved`);
+		axios.get("https://serene-bastion-85058.herokuapp.com").then((response) => {
+			console.log("❤️  -> Beat recieved");
 		}).catch((err) => {
 			console.log(`Error in Hearbeat signal generation: ${err}`);
 		});
-	}, 240000);	// 240000 ms interval, i.e. 2^2 min
+	}, 240000);	// 240000 ms interval, i.e. 4 min
 }
 
 app.use(express.urlencoded({extended: true}));
@@ -54,7 +53,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log(`Server running on http://localhost${PORT}`);
+	console.log(`Server running on http://localhost:${PORT}`);
 });
 
 
@@ -97,7 +96,7 @@ function insertSeedData() {
 			userName: "Tony Stark",
 		},
 		{
-			userName: "Ray Dalio",
+			userName: "Pierre-Simon Laplace",
 		},
 	];
 	

@@ -10,10 +10,6 @@ import PositionInfo from "./containers/PositionInfo/PositionInfo";
 import Loading from "./containers/Loading/Loading";
 import GlobalContext from "./context/GlobalContext";
 import jwt from "jsonwebtoken";
-import M from "materialize-css";
-
-
-
 
 function App() {
 

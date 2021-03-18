@@ -23,7 +23,7 @@ const PositionListItem = (props) => {
         M.toast({
           html: `Sold ${props.tickerSymbol}: Returned ${totalReturn.toFixed(
             2
-          )} % [TEST MODE]`,
+          )} %`,
           displayLength: 2000,
         });
         axios
@@ -60,7 +60,7 @@ const PositionListItem = (props) => {
     setTimeout(function () {
       axios
         .get(
-          `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+          `https://api.marketstack.com/v1/tickers/${props.tickerSymbol}/intraday?interval=1min&limit=1&access_key=${process.env.REACT_APP_MARKETVIEW_API_KEY}`
         )
         .then((res) => {
           if (res.data.data.intraday[0].last) {
