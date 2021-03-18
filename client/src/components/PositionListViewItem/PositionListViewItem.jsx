@@ -23,7 +23,7 @@ const PositionListItem = (props) => {
         M.toast({
           html: `Sold ${props.tickerSymbol}: Returned ${totalReturn.toFixed(
             2
-          )} % [TEST MODE]`,
+          )} %`,
           displayLength: 2000,
         });
         axios
