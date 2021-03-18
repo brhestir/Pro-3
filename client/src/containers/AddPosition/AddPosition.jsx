@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState, useContext } from "react";
-//import API from "../../utils/API";
 import UserProfileCard from "../../components/UserProfileCard/UserProfileCard";
 import GlobalContext from "../../context/GlobalContext";
 import M from "materialize-css";
@@ -16,7 +15,7 @@ const AddPosition = (props) => {
 
   const [boxVisible, setBoxVisible] = useState("scale-transition scale-out");
 
-  const { userObject /*, setUserObject, token, setToken*/ } = useContext(
+  const { userObject } = useContext(
     GlobalContext
   );
 
@@ -27,7 +26,7 @@ const AddPosition = (props) => {
     setBoxVisible("scale-transition scale-in");
     axios
       .get(
-        `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=10&access_key=412cef10f09b95f3a1a79b98ae8a3d0f`
+        `https://api.marketstack.com/v1/tickers/${stockName}/intraday?interval=1min&limit=10&access_key=${process.env.REACT_APP_MARKETVIEW_API_KEY}`
       )
       .then((res) => {
         if (res.data.data.intraday[0].last) {
