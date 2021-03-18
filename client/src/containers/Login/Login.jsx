@@ -57,7 +57,7 @@ const Login = () => {
 				<div className="col s12 m8 l6 offset-m2 offset-l3">
 					<div className="card teal darken-4 z-depth-3">
 						<div className="card-content white-text">
-							<span class="card-title">Welcome Back!</span>
+							<span className="card-title">Welcome Back!</span>
 							<span>Please log in to proceed:</span>
 							<form onSubmit={handleLoginFormSubmit}>
 								<div className="input-field username-input-field">
@@ -73,12 +73,12 @@ const Login = () => {
 											setUserName(e.target.value);
 										}}
 									/>
-									<label className="active" for="userName">Username</label>
+									<label className="active" htmlFor="userName">Username</label>
 								</div>
 								<div className="input-field">
 									<i className="material-icons prefix">email</i>
 									<input
-										class="validate"
+										className="validate"
 										id="email"
 										type="email"
 										name="email"
@@ -88,12 +88,12 @@ const Login = () => {
 											setEmail(e.target.value);
 										}}
 									/>
-									<label className="active" for="email">Email</label>
+									<label className="active" htmlFor="email">Email</label>
 								</div>
 								<div className="input-field">
 									<i className="material-icons prefix">vpn_key</i>
 									<input
-										class="validate"
+										className="validate"
 										id="password"
 										type="password"
 										name="password"
@@ -103,7 +103,7 @@ const Login = () => {
 											setPassword(e.target.value);
 										}}
 									/>
-									<label className="active" for="password">Password</label>
+									<label className="active" htmlFor="password">Password</label>
 								</div>
 								<div className="card-action center">
 									<button
